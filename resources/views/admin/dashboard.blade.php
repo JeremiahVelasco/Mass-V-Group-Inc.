@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/admin.css">
     <link rel="icon" href="assets/MVG Circle 1001 Logo PNG 2 - RGB.png">
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <title>MVG Admin</title>
 </head>
 
@@ -80,7 +81,7 @@
                 <li>
                     <i class='bx bxs-calendar-check'></i>
                     <span class="text">
-                        <h3>6</h3>
+                        <h3>{{ $totalRows }}</h3>
                         <p>Total Products</p>
                     </span>
                 </li>
@@ -107,49 +108,16 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($batteries as $battery)
                             <tr>
                                 <td>
-                                    <img src="assets/New Primera LM - Front.png">
-                                    <p>Primera LM</p>
+                                    <img src="{{ $battery->image}}">
+                                    <p>{{ $battery->name}}</p>
                                 </td>
-                                <td><span class="status completed">Battery</span></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="assets/samic-700x350 (1).png">
-                                    <p>Samic Engine Oil</p>
-                                </td>
-                                <td><span class="status pending">Oil</span></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="assets/New Super King LM - Front.png">
-                                    <p>Super King LM</p>
-                                </td>
-                                <td><span class="status process">Battery</span></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="assets/samic-700x350 (1).png">
-                                    <p>Samic Lubricant</p>
-                                </td>
-                                <td><span class="status pending">Lubricant</span></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="assets/New Mega Force LM - Front.png">
-                                    <p>MegaForce LM</p>
-                                </td>
-                                <td><span class="status completed">Battery</span></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="assets/Mega Force Plus.png">
-                                    <p>MegaForce Plus</p>
-                                </td>
-                                <td><span class="status completed">Battery</span></td>
+                                <td><span class="status completed">{{ $battery->mvgi}}</span></td>
                             </tr>
                         </tbody>
+                        @endforeach
                     </table>
                 </div>
                 <div class="todo">

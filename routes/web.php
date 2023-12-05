@@ -40,8 +40,11 @@ Route::get('/adminpromos', function () {
 
 
 //ADMIN GET
+Route::get('/admindashboard', [AdminController::class, 'admindashboard'])->name('admindashboard');
 Route::get('/adminproducts', [AdminController::class, 'adminproducts'])->name('adminproducts');
 Route::get('/adminfeaturedproducts', [AdminController::class, 'adminfeaturedproducts'])->name('adminfeaturedproducts');
+Route::get('/getBatteryDetails/{id}', [AdminController::class, 'getDetails'])->name('getDetails');
+
 
 //ADMIN POST
 Route::post('/addProduct', [AdminController::class, 'addProduct']);

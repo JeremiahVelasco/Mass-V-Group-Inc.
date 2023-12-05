@@ -5,10 +5,28 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Batteries;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Redis;
 
 class AdminController extends Controller
 {
+
+    public function admindashboard(Request $request)
+    {
+        $totalRows = Batteries::count();
+        if ($request->ajax()) {
+            $batteries = Batteries::select("name as value", "name")->get();
+
+            return response()->json([
+                'batteries' => $batteries,
+                'totalRows' => $totalRows,
+            ]);
+        }
+
+        $batteries = Batteries::simplePaginate(10);
+        return view('admin.dashboard', compact('batteries', 'totalRows'));
+    }
+
+
     public function adminproducts(Request $request)
     {
         if ($request->ajax()) {
@@ -94,5 +112,12 @@ class AdminController extends Controller
         } else {
             return response()->json(['message' => 'Product not found'], 404);
         }
+    }
+
+    public function getDetails($id)
+    {
+        $battery = Batteries::find($id);
+
+        return response()->json($battery);
     }
 }
