@@ -624,9 +624,43 @@ body {
 .add-product-form {
 	display: flex;
 	flex-direction: column;
-	width: 30%;
+	background-color:white;
+	transform:translateY(1rem);
+	padding:1.5rem;
+	border-radius:15px;
+	width: 50%;
 }
-
+input[type="text"]{
+	height:2rem;
+	border:1px solid #e3e3e6;
+	border-radius:10px;
+}
+#submit-button{
+	transform:translateY(10px);
+	border:none;
+	height:2.5rem;
+	border-radius:10px;
+	color:white;
+	background-color:#0c38ac;
+	opacity:100%;
+	transition:opacity ease-in-out .1s;
+}
+#submit-button:hover{
+	opacity:50%;
+}
+#cancel{
+	transform:translateY(15px);
+	border:none;
+	height:2.5rem;
+	color:white;
+	background-color:#fe022a;
+	opacity:100%;
+	border-radius:10px;
+	transition:opacity ease-in-out .1s;
+}
+#cancel:hover{
+	opacity:50%;
+}
 .hidden {
 	display: none;
 }

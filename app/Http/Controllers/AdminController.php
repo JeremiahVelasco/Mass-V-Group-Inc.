@@ -48,18 +48,22 @@ class AdminController extends Controller
             'warranty' => 'required',
             'description' => 'required',
         ]);
-
-        $data = [
-            'image' => $request->input('date'),
-            'name' => $request->input('name'),
-            'mvgi' => $request->input('mvgi'),
-            'jis_type' => $request->input('jis_type'),
-            'warranty' => $request->input('warranty'),
-            'description' => $request->input('description'),
+        $data=[
+            'image'=>'',
+            'name'=>$request->input('name'),
+            'mvgi' =>$request->input('mvgi'),
+            'jis_type' =>$request->input('jis_type'),
+            'warranty' =>$request->input('warranty'),
+            'description' =>$request->input('description'),
         ];
-
-        $result = $this->insertProduct($data);
-
+        if($request->hasFile('image')){
+            $image=$request->file('image');
+            $imageName=$request->input('name').'.'.$image->getClientOriginalExtension();
+            $imagePath='assets/'.$imageName;
+            $image->move('assets/',$imageName);
+            $data['image']=$imagePath;
+            $result=$this->insertProduct($data);
+        } 
         if ($result) {
             return response()->json(['message' => 'Product Added Successfully'], 200);
         } else {

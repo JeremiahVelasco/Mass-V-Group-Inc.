@@ -108,8 +108,8 @@
                 </div>
             </div>
             <div class="modal hidden">
-                <h1>Add Product</h1>
-                <form action="" id="add-product-form" class="add-product-form">
+                <form id="add-product-form" class="add-product-form">
+                    <h1>Add Product</h1>
                     @csrf
                     <label for="image">Image</label>
                     <input type="file" id="image">
@@ -124,7 +124,7 @@
                     <label for="description">Description</label>
                     <input type="text" id="description">
                     <button type="submit" id="submit-button">Submit</button>
-                    <button id="cancel">Cancel</button>
+                    <button type="button" id="cancel">Cancel</button>
                 </form>
             </div>
         </main>
@@ -140,41 +140,40 @@
         const cancel = document.getElementById('cancel');
 
         add.addEventListener('click', function() {
-            modal.classList.toggle('active');
+            modal.classList.remove('hidden')
+            modal.classList.add('active');
         });
 
         cancel.addEventListener('click', function() {
-            modal.classList.toggle('hidden');
+            modal.classList.remove('active');
+            modal.classList.add('hidden');
         });
 
         $(document).ready(function() {
             $("#add-product-form").submit(function(event) {
                 event.preventDefault();
-
-                var formData = {
-                    image: $("#image").val(),
-                    name: $("#name").val(),
-                    mvgi: $("#mvgi").val(),
-                    jis_type: $("#jis_type").val(),
-                    warranty: $("#warranty").val(),
-                    description: $("#description").val(),
-                    _token: $('meta[name="csrf-token"]').attr('content'),
-                };
+                let formData=new FormData();
+                const imageFile=$("#image")[0].files[0];
+                formData.append("image",imageFile);
+                formData.append("name",$("#name").val());
+                formData.append("mvgi",$("#mvgi").val());
+                formData.append("jis_type",$("#jis_type").val());
+                formData.append("warranty",$("#warranty").val());
+                formData.append("description",$("#description").val())
                 var csrfToken = $('meta[name="csrf-token"]').attr('content');
-                console.log(csrfToken);
-
+                console.log(formData);
                 $.ajax({
                     type: "POST",
                     url: "/addProduct",
                     data: formData,
+                    processData: false,
+                    contentType: false,
                     headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                        'X-CSRF-TOKEN':csrfToken,
                     },
                     success: function(response) {
-                        Swal.fire("Success!", "Patient added successfully.", "success");
-
-                        $("#add-product-form")[0].reset();
-
+                        Swal.fire("Success!", "Product added successfully.", "success");
+                        location.reload();
                     },
                     error: function(error) {
                         console.log("Did not work")
