@@ -80,47 +80,47 @@
 
             <ul class="box-info">
                 <li>
-                    <img class="fp_image" src="assets/placeholder.png" alt="">
+                    <img class="fp_image" src="assets/placeholder.png" id="image-content-1" alt="">
                     <span class="text">
                         <form action="">
-                            <h3>Product 1</h3>
-                            <select name="feature" id="feature-one">
+                            <h3 id="header-1">Product 1</h3>
+                            <select name="feature" id="feature-1">
                                 <option value="default">Choose from Products</option>
                                 @foreach($batteries as $battery)
                                 <option value="{{ $battery->id }}">{{ $battery->name }}</option>
                                 @endforeach
                             </select>
-                            <button type="button" onclick="saveBattery(this)">Save</button>
+                            <button type="button" onclick="saveBattery(1)">Save</button>
                         </form>
                     </span>
                 </li>
                 <li>
-                    <img class="fp_image" src="assets/placeholder.png" alt="">
+                    <img class="fp_image" src="assets/placeholder.png" id="image-content-2" alt="">
                     <span class="text">
                         <form action="">
-                            <h3>Product 2</h3>
-                            <select name="feature" id="feature-two">
+                            <h3 id="header-2">Product 2</h3>
+                            <select name="feature" id="feature-2">
                                 <option value="default">Choose from Products</option>
                                 @foreach($batteries as $battery)
                                 <option value="{{ $battery->id }}">{{ $battery->name }}</option>
                                 @endforeach
                             </select>
-                            <button type="button" onclick="saveBattery(this)">Save</button>
+                            <button type="button" onclick="saveBattery(2)">Save</button>
                         </form>
                     </span>
                 </li>
                 <li>
-                    <img class="fp_image" src="assets/placeholder.png" alt="">
+                    <img class="fp_image" src="assets/placeholder.png" id="image-content-3" alt="">
                     <span class="text">
                         <form action="">
-                            <h3>Product 3</h3>
-                            <select name="feature" id="feature-three">
+                            <h3 id="header-3">Product 3</h3>
+                            <select name="feature" id="feature-3">
                                 <option value="default">Choose from Products</option>
                                 @foreach($batteries as $battery)
                                 <option value="{{ $battery->id }}">{{ $battery->name }}</option>
                                 @endforeach
                             </select>
-                            <button type="button" onclick="saveBattery(this)">Save</button>
+                            <button type="button" onclick="saveBattery(3)">Save</button>
                         </form>
                     </span>
                 </li>
@@ -137,8 +137,9 @@
         const product2 = document.getElementById('feature-two');
         //const product3 = document.getElementById('feature-three');
 
-        function saveBattery() {
-            var selectedBatteryId = $("#feature-three").val();
+        function saveBattery(num) {
+            var batteryIdSelector="#feature-"+num;
+            var selectedBatteryId = $(batteryIdSelector).val();
 
             if (selectedBatteryId !== 'default') {
                 $.ajax({
@@ -146,8 +147,10 @@
                     url: "/getBatteryDetails/" + selectedBatteryId,
                     success: function(response) {
                         // Update the details on the page
-                        $(".fp_image").attr("src", response.image); // Assuming there's an 'image' field in the response
-                        $("h3").text(response.name); // Update other details accordingly
+                        var imageContentSelector="#image-content-"+num;
+                        var headerSelector="#header-"+num;
+                        $(imageContentSelector).attr("src", response.image); // Assuming there's an 'image' field in the response
+                        $(headerSelector).text(response.name); // Update other details accordingly
                     },
                     error: function(error) {
                         console.log("Error fetching battery details");
