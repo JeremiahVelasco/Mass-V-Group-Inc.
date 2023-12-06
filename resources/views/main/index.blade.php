@@ -19,12 +19,16 @@
             </div>
             <ul class="nav-links">
                 <li><a href="/">Home</a></li>
-                <li><a href="/products">Products</a></li>
-                <li><a href="#"><img src="assets/fb.png"></a></li>
-                <li><a href="#"><img src="assets/shopee.png"></a></li>
+                <li><a href="/products">Batteries</a></li>
+                <li><a href="/products">Samic Lubricants</a></li>
+                <li><a href="https://www.facebook.com/massvgroup/"><img src="assets/fb.png"></a></li>
+                <li><a href="https://www.facebook.com/MegaforcePrimeraSuperkingPH/?paipv=0&eav=AfYspb5RCyF8uhVvcBzAiz5yyI6d3hcW06IPDc0T8lWrDRYIwa9oYlNccmFe9PSIel8&_rdr"><img src="assets/mf.png"></a></li>
+                <li><a href="#"><i class="fa-solid fa-phone"></i> (+632) 3454-7355</a></li>
+                <!--
+                <li><a href="https://samiclubricants.com/"><img src="assets/shopee.png"></a></li>
                 <li><a href="#"><img src="assets/lazada.png"></a></li>
                 <li><a href="#"><img src="assets/tiktok.jpeg"></a></li>
-                <li><a href="#"><i class="fa-solid fa-phone"></i> (+632) 3454-7355</a></li>
+                -->
             </ul>
         </nav>
         <!--HERO CONTENT-->
@@ -48,6 +52,10 @@
         <div class="card one" style="background: #0C38AD;">
             <h2 style="color: #ffffff;">Quality Control</h2>
             <p style="color: #ffffff;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Debitis laboriosam illo fugit doloribus dignissimos officia autem, harum ipsum sit cupiditate!</p>
+        </div>
+        <div class="card two" style="background: #ececec;">
+            <h2>Nationwide</h2>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Debitis laboriosam illo fugit doloribus dignissimos officia autem, harum ipsum sit cupiditate!</p>
         </div>
         <div class="card two" style="background: #ececec;">
             <h2>Nationwide</h2>

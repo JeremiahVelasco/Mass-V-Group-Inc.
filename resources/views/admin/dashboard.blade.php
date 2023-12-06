@@ -104,7 +104,7 @@
                         <thead>
                             <tr>
                                 <th>Product</th>
-                                <th>Category</th>
+                                <th>MVGI</th>
                             </tr>
                         </thead>
                         <tbody>

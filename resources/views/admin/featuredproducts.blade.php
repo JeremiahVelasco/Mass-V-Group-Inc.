@@ -124,6 +124,21 @@
                         </form>
                     </span>
                 </li>
+                <li>
+                    <img class="fp_image" src="assets/placeholder.png" id="image-content-3" alt="">
+                    <span class="text">
+                        <form action="">
+                            <h3 id="header-3">Product 4</h3>
+                            <select name="feature" id="feature-3">
+                                <option value="default">Choose from Products</option>
+                                @foreach($batteries as $battery)
+                                <option value="{{ $battery->id }}">{{ $battery->name }}</option>
+                                @endforeach
+                            </select>
+                            <button type="button" onclick="saveBattery(3)">Save</button>
+                        </form>
+                    </span>
+                </li>
             </ul>
         </main>
         <!-- MAIN -->
@@ -138,7 +153,7 @@
         //const product3 = document.getElementById('feature-three');
 
         function saveBattery(num) {
-            var batteryIdSelector="#feature-"+num;
+            var batteryIdSelector = "#feature-" + num;
             var selectedBatteryId = $(batteryIdSelector).val();
 
             if (selectedBatteryId !== 'default') {
@@ -147,8 +162,8 @@
                     url: "/getBatteryDetails/" + selectedBatteryId,
                     success: function(response) {
                         // Update the details on the page
-                        var imageContentSelector="#image-content-"+num;
-                        var headerSelector="#header-"+num;
+                        var imageContentSelector = "#image-content-" + num;
+                        var headerSelector = "#header-" + num;
                         $(imageContentSelector).attr("src", response.image); // Assuming there's an 'image' field in the response
                         $(headerSelector).text(response.name); // Update other details accordingly
                     },
