@@ -17,7 +17,7 @@ nav {
 }
 
 .logo img {
-    height: 60px;
+    height: 50px;
 }
 
 .nav-links {
@@ -27,7 +27,7 @@ nav {
 }
 
 .nav-links img {
-    height: 32px;
+    height: 28px;
     border-radius: 10px;
 }
 
@@ -338,6 +338,7 @@ button:active {
 .products h1 {
     text-align: center;
     font-size: 42px;
+    margin-top: 2rem;
 }
 
 .products .product-container {
@@ -374,4 +375,64 @@ button:active {
 
 .product-card button:active {
     transform: scale(1.05);
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+    }
+    .nav {
+        padding: 1rem 0;
+    }
+    .nav-links {
+        display: none;
+    }
+    .hero {
+        display: block;
+        text-align: center;
+    }
+    .hero .content {
+        width: 100%;
+    }
+    .hero .image {
+        display: none;
+    }
+    .section1 {
+        flex-direction: column;
+        height: 100vh;
+        align-items: center;
+    }
+    .card {
+        width: 380px;
+    }
+    .section2 form select {
+        width: 340px;
+    }
+    .about-container {
+        flex-direction: column;
+    }
+    .section3 li {
+        margin-left: 15px;
+    }
+    .section3 .timeline {
+        width: 400px;
+    }
+    .section3 .mission-vision {
+        width: 400px;
+    }
+    .mv-card {
+        width: 380px;
+    }
+    .products .product-container  {
+        flex-direction: column;
+        min-height: 100vh;
+        margin-top: 140%;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+    .products img {
+        width: 370px;
+    }
+    .product-card button {
+        margin-bottom: 2rem;
+    }
 }

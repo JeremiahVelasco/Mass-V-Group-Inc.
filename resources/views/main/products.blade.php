@@ -33,7 +33,7 @@
     </header>
 
     <section class="products">
-        <h1>Our Products</h1>
+        <h1>Batteries</h1>
         <div class="product-container">
             <div class="product-card">
                 <img src="assets/megaforce.webp" alt="megaforce batteries">

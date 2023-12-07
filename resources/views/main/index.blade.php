@@ -50,19 +50,19 @@
     <!--SECTION 1-->
     <section class="section1">
         <div class="card one" style="background: #0C38AD;">
-            <h2 style="color: #ffffff;">Quality Control</h2>
+            <h2 style="color: #ffffff;">Featured Product 1</h2>
             <p style="color: #ffffff;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Debitis laboriosam illo fugit doloribus dignissimos officia autem, harum ipsum sit cupiditate!</p>
         </div>
         <div class="card two" style="background: #ececec;">
-            <h2>Nationwide</h2>
+            <h2>Featured Product 2</h2>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Debitis laboriosam illo fugit doloribus dignissimos officia autem, harum ipsum sit cupiditate!</p>
         </div>
         <div class="card two" style="background: #ececec;">
-            <h2>Nationwide</h2>
+            <h2>Featured Product 3</h2>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Debitis laboriosam illo fugit doloribus dignissimos officia autem, harum ipsum sit cupiditate!</p>
         </div>
         <div class="card three" style="background: #db3636;">
-            <h2 style="color: #ffffff;">Trade-in Discounts</h2>
+            <h2 style="color: #ffffff;">Featured Product 4</h2>
             <p style="color: #ffffff;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Debitis laboriosam illo fugit doloribus dignissimos officia autem, harum ipsum sit cupiditate!</p>
         </div>
     </section>
