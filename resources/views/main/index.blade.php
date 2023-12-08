@@ -20,8 +20,8 @@
             <ul class="nav-links">
                 <li><a href="/">Home</a></li>
                 <li><a href="/products">Batteries</a></li>
-                <li><a href="/products">Samic Lubricants</a></li>
-                <li><a href="/products">Contact Us</a></li>
+                <li><a href="/lubricants">Samic Lubricants</a></li>
+                <li><a href="/contact">Contact Us</a></li>
                 <li><a href="https://www.facebook.com/massvgroup/"><img src="assets/fb.png"></a></li>
                 <li><a href="https://www.facebook.com/MegaforcePrimeraSuperkingPH/?paipv=0&eav=AfYspb5RCyF8uhVvcBzAiz5yyI6d3hcW06IPDc0T8lWrDRYIwa9oYlNccmFe9PSIel8&_rdr"><img src="assets/mf.png"></a></li>
                 <!--
@@ -50,6 +50,7 @@
 
     <!--SECTION 1-->
     <section class="section1">
+
         <div class="card one" style="background: #0C38AD;">
             <h2 style="color: #ffffff;">Featured Product 1</h2>
             <p style="color: #ffffff;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Debitis laboriosam illo fugit doloribus dignissimos officia autem, harum ipsum sit cupiditate!</p>
@@ -58,15 +59,17 @@
             <h2>Featured Product 2</h2>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Debitis laboriosam illo fugit doloribus dignissimos officia autem, harum ipsum sit cupiditate!</p>
         </div>
-        <div class="card two" style="background: #ececec;">
-            <h2>Featured Product 3</h2>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Debitis laboriosam illo fugit doloribus dignissimos officia autem, harum ipsum sit cupiditate!</p>
-        </div>
         <div class="card three" style="background: #db3636;">
-            <h2 style="color: #ffffff;">Featured Product 4</h2>
+            <h2 style="color: #ffffff;">Featured Product 3</h2>
             <p style="color: #ffffff;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Debitis laboriosam illo fugit doloribus dignissimos officia autem, harum ipsum sit cupiditate!</p>
         </div>
+        <div class="card two" style="background: #ececec;">
+            <h2>Featured Product 4</h2>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Debitis laboriosam illo fugit doloribus dignissimos officia autem, harum ipsum sit cupiditate!</p>
+        </div>
     </section>
+
+
 
     <!--SECTION 2-->
     <section class="section2">

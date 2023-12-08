@@ -22,6 +22,14 @@ Route::get('/products', function () {
     return view('main.products');
 });
 
+Route::get('/lubricants', function () {
+    return view('main.lubricants');
+});
+
+Route::get('/contact', function () {
+    return view('main.contact');
+});
+
 Route::get('/admindashboard', function () {
     return view('admin.dashboard');
 });
@@ -42,6 +50,7 @@ Route::get('/adminpromos', function () {
 //ADMIN GET
 Route::get('/admindashboard', [AdminController::class, 'admindashboard'])->name('admindashboard');
 Route::get('/adminproducts', [AdminController::class, 'adminproducts'])->name('adminproducts');
+//Route::get('/adminlubricants', [AdminController::class, 'adminlubricants'])->name('adminlubricants');
 Route::get('/adminfeaturedproducts', [AdminController::class, 'adminfeaturedproducts'])->name('adminfeaturedproducts');
 Route::get('/getBatteryDetails/{id}', [AdminController::class, 'getDetails'])->name('getDetails');
 
