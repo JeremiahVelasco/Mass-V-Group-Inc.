@@ -91,6 +91,7 @@ class AdminController extends Controller
                 'jis_type' => $data['jis_type'],
                 'warranty' => $data['warranty'],
                 'description' => $data['description'],
+                'saved_slot'=>0,
             ]);
     }
 

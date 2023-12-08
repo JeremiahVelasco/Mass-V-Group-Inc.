@@ -157,7 +157,6 @@
                 url:"/getSavedProducts",
                 success:function(response){
                     if(response.success){
-                        console.log('Fetching saved products ',response.data);
                         let results=response.data;
                         results.forEach(result=>{
                             const num=result.saved_slot;
