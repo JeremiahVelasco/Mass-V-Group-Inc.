@@ -125,17 +125,17 @@
                     </span>
                 </li>
                 <li>
-                    <img class="fp_image" src="assets/placeholder.png" id="image-content-3" alt="">
+                    <img class="fp_image" src="assets/placeholder.png" id="image-content-4" alt="">
                     <span class="text">
                         <form action="">
-                            <h3 id="header-3">Product 4</h3>
-                            <select name="feature" id="feature-3">
+                            <h3 id="header-4">Product 4</h3>
+                            <select name="feature" id="feature-4">
                                 <option value="default">Choose from Products</option>
                                 @foreach($batteries as $battery)
                                 <option value="{{ $battery->id }}">{{ $battery->name }}</option>
                                 @endforeach
                             </select>
-                            <button type="button" onclick="saveBattery(3)">Save</button>
+                            <button type="button" onclick="saveBattery(4)">Save</button>
                         </form>
                     </span>
                 </li>
@@ -151,30 +151,59 @@
         const product1 = document.getElementById('feature-one');
         const product2 = document.getElementById('feature-two');
         //const product3 = document.getElementById('feature-three');
-
+        function renderSavedProducts(){
+            $.ajax({
+                type:'GET',
+                url:"/getSavedProducts",
+                success:function(response){
+                    if(response.success){
+                        console.log('Fetching saved products ',response.data);
+                        let results=response.data;
+                        results.forEach(result=>{
+                            const num=result.saved_slot;
+                            let imageContentSelector="#image-content-"+num;
+                            let headerSelector="#header-"+num;
+                            $(imageContentSelector).attr("src",result.image);
+                            $(headerSelector).text(result.name);
+                        });
+                    }
+                    else{
+                        console.log('No existing products');
+                    }
+                },
+                error:function(error){
+                    console.error('Error fetching saved battery',error);
+                }
+            })
+        }
         function saveBattery(num) {
-            var batteryIdSelector = "#feature-" + num;
-            var selectedBatteryId = $(batteryIdSelector).val();
-
+            let batteryIdSelector = "#feature-" + num;
+            let selectedBatteryId = $(batteryIdSelector).val();
+            let csrfHeader=$('meta[name="csrf-token"]').attr('content');
             if (selectedBatteryId !== 'default') {
+                //update save_slot of given battery id
                 $.ajax({
-                    type: "GET",
-                    url: "/getBatteryDetails/" + selectedBatteryId,
+                    type: "POST",
+                    url: `/saveBattery/${selectedBatteryId}/${num}`,
+                    headers:{
+                        'X-CSRF-TOKEN':csrfHeader
+                    },
                     success: function(response) {
                         // Update the details on the page
-                        var imageContentSelector = "#image-content-" + num;
-                        var headerSelector = "#header-" + num;
-                        $(imageContentSelector).attr("src", response.image); // Assuming there's an 'image' field in the response
-                        $(headerSelector).text(response.name); // Update other details accordingly
+                        if(response.success){
+                            console.log(response.message);
+                            renderSavedProducts();
+                        }
                     },
                     error: function(error) {
-                        console.log("Error fetching battery details");
+                        console.log("Error saving battery details",error);
                     }
                 });
             } else {
                 console.log("Please select a battery");
             }
         }
+        renderSavedProducts();
     </script>
 </body>
 
