@@ -10,6 +10,16 @@ use Illuminate\Support\Facades\Redis;
 class AdminController extends Controller
 {
 
+    public function home()
+    {
+        $data = DB::table('batteries')
+            ->where('saved_slot', '!=', 0)
+            ->orderBy('saved_slot', 'asc')
+            ->get();
+
+        return view('main.index', ['products' => $data]);
+    }
+
     public function admindashboard(Request $request)
     {
         $totalRows = Batteries::count();
@@ -48,22 +58,22 @@ class AdminController extends Controller
             'warranty' => 'required',
             'description' => 'required',
         ]);
-        $data=[
-            'image'=>'',
-            'name'=>$request->input('name'),
-            'mvgi' =>$request->input('mvgi'),
-            'jis_type' =>$request->input('jis_type'),
-            'warranty' =>$request->input('warranty'),
-            'description' =>$request->input('description'),
+        $data = [
+            'image' => '',
+            'name' => $request->input('name'),
+            'mvgi' => $request->input('mvgi'),
+            'jis_type' => $request->input('jis_type'),
+            'warranty' => $request->input('warranty'),
+            'description' => $request->input('description'),
         ];
-        if($request->hasFile('image')){
-            $image=$request->file('image');
-            $imageName=$request->input('name').'.'.$image->getClientOriginalExtension();
-            $imagePath='assets/'.$imageName;
-            $image->move('assets/',$imageName);
-            $data['image']=$imagePath;
-            $result=$this->insertProduct($data);
-        } 
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = $request->input('name') . '.' . $image->getClientOriginalExtension();
+            $imagePath = 'assets/' . $imageName;
+            $image->move('assets/', $imageName);
+            $data['image'] = $imagePath;
+            $result = $this->insertProduct($data);
+        }
         if ($result) {
             return response()->json(['message' => 'Product Added Successfully'], 200);
         } else {
@@ -125,44 +135,47 @@ class AdminController extends Controller
         return response()->json($battery);
     }
 
-    public function getSavedData(){
-        $batteries=DB::table('batteries')
-            ->where('saved_slot','!=',0)
+    public function getSavedData()
+    {
+        $batteries = DB::table('batteries')
+            ->where('saved_slot', '!=', 0)
             ->get();
-        if(!$batteries){
-            return response()->json(['success'=>false,'data'=>'No Saved Batteries!']);
+        if (!$batteries) {
+            return response()->json(['success' => false, 'data' => 'No Saved Batteries!']);
         }
-        return response()->json(['success'=>true,'data'=>$batteries]);
+        return response()->json(['success' => true, 'data' => $batteries]);
     }
 
-    public function overwriteSavedBatteryData($id,$slot,$resultID){
+    public function overwriteSavedBatteryData($id, $slot, $resultID)
+    {
         //Set the state of the previous id's saved slot to 0
         DB::table('batteries')
-            ->where('id',$resultID)
-            ->update(['saved_slot'=>0]);
+            ->where('id', $resultID)
+            ->update(['saved_slot' => 0]);
         //Set the new id to the given slot
-        $this->saveBatteryData($id,$slot);
+        $this->saveBatteryData($id, $slot);
     }
 
-    public function saveBatteryData($id,$slot){
+    public function saveBatteryData($id, $slot)
+    {
         DB::table('batteries')
-            ->where('id',$id)
-            ->update(['saved_slot'=>$slot]);
+            ->where('id', $id)
+            ->update(['saved_slot' => $slot]);
     }
 
-    public function saveBattery($id,$slot){
+    public function saveBattery($id, $slot)
+    {
         //check if there are exisiting id for the saved_slot
-        $result=DB::table('batteries')
+        $result = DB::table('batteries')
             ->select('id')
-            ->where('saved_slot',$slot)
+            ->where('saved_slot', $slot)
             ->first();
-        if($result){
-            $resultID=$result->id;
-            $this->overwriteSavedBatteryData($id,$slot,$resultID);
-            return response()->json(['success'=>true,'message'=>'Overwritten saved slot '.$slot]);
+        if ($result) {
+            $resultID = $result->id;
+            $this->overwriteSavedBatteryData($id, $slot, $resultID);
+            return response()->json(['success' => true, 'message' => 'Overwritten saved slot ' . $slot]);
         }
-        $this->saveBatteryData($id,$slot);
-        return response()->json(['success'=>true,'message'=>'Saved on slot'.$slot]);
+        $this->saveBatteryData($id, $slot);
+        return response()->json(['success' => true, 'message' => 'Saved on slot' . $slot]);
     }
-
 }

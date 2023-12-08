@@ -413,11 +413,13 @@ button:active {
 
 .contact-form form h2 {
     margin-bottom: 1rem;
+    color: #0C38AD;
 }
 
 .contact-form label {
     margin: 1rem 0 .3rem;
     font-weight: 500;
+    color: #0C38AD;
 }
 
 .contact-form form input {
