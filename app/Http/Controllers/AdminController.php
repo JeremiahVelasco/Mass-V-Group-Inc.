@@ -124,4 +124,45 @@ class AdminController extends Controller
 
         return response()->json($battery);
     }
+
+    public function getSavedData(){
+        $batteries=DB::table('batteries')
+            ->where('saved_slot','!=',0)
+            ->get();
+        if(!$batteries){
+            return response()->json(['success'=>false,'data'=>'No Saved Batteries!']);
+        }
+        return response()->json(['success'=>true,'data'=>$batteries]);
+    }
+
+    public function overwriteSavedBatteryData($id,$slot,$resultID){
+        //Set the state of the previous id's saved slot to 0
+        DB::table('batteries')
+            ->where('id',$resultID)
+            ->update(['saved_slot'=>0]);
+        //Set the new id to the given slot
+        $this->saveBatteryData($id,$slot);
+    }
+
+    public function saveBatteryData($id,$slot){
+        DB::table('batteries')
+            ->where('id',$id)
+            ->update(['saved_slot'=>$slot]);
+    }
+
+    public function saveBattery($id,$slot){
+        //check if there are exisiting id for the saved_slot
+        $result=DB::table('batteries')
+            ->select('id')
+            ->where('saved_slot',$slot)
+            ->first();
+        if($result){
+            $resultID=$result->id;
+            $this->overwriteSavedBatteryData($id,$slot,$resultID);
+            return response()->json(['success'=>true,'message'=>'Overwritten saved slot '.$slot]);
+        }
+        $this->saveBatteryData($id,$slot);
+        return response()->json(['success'=>true,'message'=>'Saved on slot'.$slot]);
+    }
+
 }

@@ -53,8 +53,10 @@ Route::get('/adminproducts', [AdminController::class, 'adminproducts'])->name('a
 //Route::get('/adminlubricants', [AdminController::class, 'adminlubricants'])->name('adminlubricants');
 Route::get('/adminfeaturedproducts', [AdminController::class, 'adminfeaturedproducts'])->name('adminfeaturedproducts');
 Route::get('/getBatteryDetails/{id}', [AdminController::class, 'getDetails'])->name('getDetails');
+Route::get('/getSavedProducts',[AdminController::class, 'getSavedData']);
 
 
 //ADMIN POST
 Route::post('/addProduct', [AdminController::class, 'addProduct']);
 Route::post('/deleteProduct', [AdminController::class, 'deleteProduct']);
+Route::post('/saveBattery/{id}/{slot}', [AdminController::class,'saveBattery']);
