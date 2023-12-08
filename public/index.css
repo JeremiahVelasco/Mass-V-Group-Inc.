@@ -145,19 +145,14 @@ button:active {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 35vh;
+    height: 40vh;
     background: rgb(245, 245, 245);
 }
 
 .card {
     text-align: center;
-    width: 400px;
-    height: 150px;
-    padding: 15px;
-    border-radius: 15px;
-    box-shadow: 10px 10px 20px 0px rgba(0,0,0,0.75);
-    -webkit-box-shadow: 10px 10px 20px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 10px 10px 20px 0px rgba(0,0,0,0.75);
+    width: 200px;
+    height: 300px;
 }
 
 .card h2 {
@@ -166,6 +161,16 @@ button:active {
 
 .card p {
     font-weight: 300;
+}
+
+#featured-image {
+    width: 180px;
+    height: 150px;
+}
+
+.featured-details {
+    height: 200px;
+    padding: 15px;
 }
 
 .section2 {
