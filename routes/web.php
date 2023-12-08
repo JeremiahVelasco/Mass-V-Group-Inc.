@@ -14,10 +14,6 @@ use App\Http\Controllers\AdminController;
 |
 */
 
-Route::get('/', function () {
-    return view('main.index');
-});
-
 Route::get('/products', function () {
     return view('main.products');
 });
@@ -46,6 +42,9 @@ Route::get('/adminpromos', function () {
     return view('admin.promos');
 });
 
+//USER ROUTES
+Route::get('/', [AdminController::class, 'home'])->name('home');
+
 
 //ADMIN GET
 Route::get('/admindashboard', [AdminController::class, 'admindashboard'])->name('admindashboard');
@@ -53,10 +52,10 @@ Route::get('/adminproducts', [AdminController::class, 'adminproducts'])->name('a
 //Route::get('/adminlubricants', [AdminController::class, 'adminlubricants'])->name('adminlubricants');
 Route::get('/adminfeaturedproducts', [AdminController::class, 'adminfeaturedproducts'])->name('adminfeaturedproducts');
 Route::get('/getBatteryDetails/{id}', [AdminController::class, 'getDetails'])->name('getDetails');
-Route::get('/getSavedProducts',[AdminController::class, 'getSavedData']);
+Route::get('/getSavedProducts', [AdminController::class, 'getSavedData']);
 
 
 //ADMIN POST
 Route::post('/addProduct', [AdminController::class, 'addProduct']);
 Route::post('/deleteProduct', [AdminController::class, 'deleteProduct']);
-Route::post('/saveBattery/{id}/{slot}', [AdminController::class,'saveBattery']);
+Route::post('/saveBattery/{id}/{slot}', [AdminController::class, 'saveBattery']);

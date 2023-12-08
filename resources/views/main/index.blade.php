@@ -50,9 +50,9 @@
 
     <!--SECTION 1-->
     <section class="section1">
-
+        @foreach($products as $product)
         <div class="card one" style="background: #0C38AD;">
-            <h2 style="color: #ffffff;">Featured Product 1</h2>
+            <h2 style="color: #ffffff;">{{ $product -> name }}</h2>
             <p style="color: #ffffff;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Debitis laboriosam illo fugit doloribus dignissimos officia autem, harum ipsum sit cupiditate!</p>
         </div>
         <div class="card two" style="background: #ececec;">
@@ -67,8 +67,8 @@
             <h2>Featured Product 4</h2>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Debitis laboriosam illo fugit doloribus dignissimos officia autem, harum ipsum sit cupiditate!</p>
         </div>
+        @endforeach
     </section>
-
 
 
     <!--SECTION 2-->
