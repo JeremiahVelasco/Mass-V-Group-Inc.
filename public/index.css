@@ -378,8 +378,6 @@ button:active {
 }
 
 @media only screen and (max-width: 600px) {
-    body {
-    }
     .nav {
         padding: 1rem 0;
     }
