@@ -153,7 +153,7 @@
             $("#add-product-form").submit(function(event) {
                 event.preventDefault();
                 let formData=new FormData();
-                const imageFile=$("#image")[0].files[0];
+                let imageFile=$("#image")[0].files[0];
                 formData.append("image",imageFile);
                 formData.append("name",$("#name").val());
                 formData.append("mvgi",$("#mvgi").val());
@@ -176,7 +176,7 @@
                         location.reload();
                     },
                     error: function(error) {
-                        console.log("Did not work")
+                        console.log("Did not work ",error);
 
                     },
                 });
