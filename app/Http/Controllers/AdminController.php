@@ -22,18 +22,9 @@ class AdminController extends Controller
 
     public function admindashboard(Request $request)
     {
-        $totalRows = Batteries::count();
-        if ($request->ajax()) {
-            $batteries = Batteries::select("name as value", "name")->get();
-
-            return response()->json([
-                'batteries' => $batteries,
-                'totalRows' => $totalRows,
-            ]);
-        }
-
-        $batteries = Batteries::simplePaginate(10);
-        return view('admin.dashboard', compact('batteries', 'totalRows'));
+        $products = DB::table('batteries')->get();
+        $product_count=DB::table('batteries')->count(); 
+        return view('admin.dashboard', ['batteries'=>$products,'battery_count'=>$product_count]);
     }
 
 
@@ -51,7 +42,7 @@ class AdminController extends Controller
     public function addProduct(Request $request)
     {
         $request->validate([
-            'image' => 'required',
+            'image' => 'required|image',
             'name' => 'required',
             'mvgi' => 'required',
             'jis_type' => 'required',

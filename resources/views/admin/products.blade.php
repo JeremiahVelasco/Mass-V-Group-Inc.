@@ -161,7 +161,6 @@
                 formData.append("warranty",$("#warranty").val());
                 formData.append("description",$("#description").val())
                 var csrfToken = $('meta[name="csrf-token"]').attr('content');
-                console.log(formData);
                 $.ajax({
                     type: "POST",
                     url: "/addProduct",
