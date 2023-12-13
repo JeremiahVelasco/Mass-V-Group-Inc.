@@ -13,7 +13,11 @@
 
 <body>
 
-
+    @if(!session('adminsuccess'))
+        <script>
+            window.location.href="/adminlogin";
+        </script>
+    @endif
     <!-- SIDEBAR -->
     <section id="sidebar">
         <a href="#" class="brand">

@@ -15,7 +15,11 @@
 
 <body>
 
-
+    @if(!session('adminsuccess'))
+        <script>
+            window.location.href="/adminlogin";
+        </script>
+    @endif
     <!-- SIDEBAR -->
     <section id="sidebar">
         <a href="#" class="brand">
@@ -100,7 +104,7 @@
                         <form action="">
                             <h3 id="header-2">Product 2</h3>
                             <select name="feature" id="feature-2">
-                                <option value="default">Choose from Products</option>
+                                <option value="default">Default</option>
                                 @foreach($batteries as $battery)
                                 <option value="{{ $battery->id }}">{{ $battery->name }}</option>
                                 @endforeach
@@ -115,27 +119,12 @@
                         <form action="">
                             <h3 id="header-3">Product 3</h3>
                             <select name="feature" id="feature-3">
-                                <option value="default">Choose from Products</option>
+                                <option value="default">Default</option>
                                 @foreach($batteries as $battery)
                                 <option value="{{ $battery->id }}">{{ $battery->name }}</option>
                                 @endforeach
                             </select>
                             <button type="button" onclick="saveBattery(3)">Save</button>
-                        </form>
-                    </span>
-                </li>
-                <li>
-                    <img class="fp_image" src="assets/placeholder.png" id="image-content-4" alt="">
-                    <span class="text">
-                        <form action="">
-                            <h3 id="header-4">Product 4</h3>
-                            <select name="feature" id="feature-4">
-                                <option value="default">Choose from Products</option>
-                                @foreach($batteries as $battery)
-                                <option value="{{ $battery->id }}">{{ $battery->name }}</option>
-                                @endforeach
-                            </select>
-                            <button type="button" onclick="saveBattery(4)">Save</button>
                         </form>
                     </span>
                 </li>
@@ -157,13 +146,16 @@
                 url: "/getSavedProducts",
                 success: function(response) {
                     if (response.success) {
+                        //reset all states
                         let results = response.data;
                         results.forEach(result => {
                             const num = result.saved_slot;
                             let imageContentSelector = "#image-content-" + num;
                             let headerSelector = "#header-" + num;
+                            let featureSelector = "#feature-"+num;
                             $(imageContentSelector).attr("src", result.image);
                             $(headerSelector).text(result.name);
+                            $(featureSelector).val(result.id);
                         });
                     } else {
                         console.log('No existing products');
@@ -191,6 +183,14 @@
                         // Update the details on the page
                         if (response.success) {
                             console.log(response.message);
+                            let count=1;
+                            let all_h3=document.querySelectorAll('h3');
+                            all_h3.forEach(h3=>{
+                                h3.textContent='Product'+count;
+                                count++;
+                            })
+                            $(".fp_image").attr('src','assets/placeholder.png');
+                            $(".feature").val('default');
                             renderSavedProducts();
                         }
                     },
@@ -199,7 +199,7 @@
                     }
                 });
             } else {
-                console.log("Please select a battery");
+                alert("Please select a battery");
             }
         }
         renderSavedProducts();

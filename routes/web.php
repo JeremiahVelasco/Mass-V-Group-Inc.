@@ -45,7 +45,7 @@ Route::get('/adminpromos', function () {
 //USER ROUTES
 Route::get('/', [AdminController::class, 'home'])->name('home');
 
-//ADMIN REGISTER LOGIN
+//ADMIN REGISTER LOGIN AND LOGOUT
 Route::get('/adminlogin', function () {
     return view('admin.login');
 });
@@ -53,6 +53,8 @@ Route::get('/adminlogin', function () {
 Route::get('/adminregister', function () {
     return view('admin.register');
 });
+
+Route::get('/logout',[AdminController::class,'logoutAdmin']);
 
 
 //ADMIN GET
@@ -62,9 +64,12 @@ Route::get('/adminproducts', [AdminController::class, 'adminproducts'])->name('a
 Route::get('/adminfeaturedproducts', [AdminController::class, 'adminfeaturedproducts'])->name('adminfeaturedproducts');
 Route::get('/getBatteryDetails/{id}', [AdminController::class, 'getDetails'])->name('getDetails');
 Route::get('/getSavedProducts', [AdminController::class, 'getSavedData']);
+Route::get('/username-exists',[AdminController::class,'usernameExists']);
 
 
 //ADMIN POST
 Route::post('/addProduct', [AdminController::class, 'addProduct']);
 Route::post('/deleteProduct', [AdminController::class, 'deleteProduct']);
 Route::post('/saveBattery/{id}/{slot}', [AdminController::class, 'saveBattery']);
+Route::post('/registeradmin',[AdminController::class,'registerAdmin']);
+Route::post('/loginadmin',[AdminController::class,'loginAdmin']);
