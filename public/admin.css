@@ -674,3 +674,9 @@ input[type="text"]{
 	width: 60px;
 	border-radius: 15px;
 }
+
+.cs {
+    text-align: center;
+	font-size: 80px;
+	font-weight: 700;
+}

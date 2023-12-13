@@ -112,7 +112,7 @@
                     <h1>Add Product</h1>
                     @csrf
                     <label for="image">Image</label>
-                    <input type="file" id="image">
+                    <input type="file" id="image" name="image">
                     <label for="name">Name</label>
                     <input type="text" id="name">
                     <label for="mvgi">MVGI</label>
@@ -152,15 +152,17 @@
         $(document).ready(function() {
             $("#add-product-form").submit(function(event) {
                 event.preventDefault();
-                let formData=new FormData();
-                let imageFile=document.getElementById('image').files[0];
-                formData.append("image",imageFile);
-                formData.append("name",$("#name").val());
-                formData.append("mvgi",$("#mvgi").val());
-                formData.append("jis_type",$("#jis_type").val());
-                formData.append("warranty",$("#warranty").val());
-                formData.append("description",$("#description").val())
+                let formData = new FormData();
+                let imageFile = document.getElementById('image').files[0];
+                formData.append("image", imageFile);
+                formData.append("name", $("#name").val());
+                formData.append("mvgi", $("#mvgi").val());
+                formData.append("jis_type", $("#jis_type").val());
+                formData.append("warranty", $("#warranty").val());
+                formData.append("description", $("#description").val())
                 var csrfToken = $('meta[name="csrf-token"]').attr('content');
+                console.log(formData);
+                console.log(imageFile);
                 $.ajax({
                     type: "POST",
                     url: "/addProduct",
@@ -168,15 +170,14 @@
                     processData: false,
                     contentType: false,
                     headers: {
-                        'X-CSRF-TOKEN':csrfToken,
+                        'X-CSRF-TOKEN': csrfToken,
                     },
                     success: function(response) {
                         Swal.fire("Success!", "Product added successfully.", "success");
                         location.reload();
                     },
                     error: function(error) {
-                        console.log("Did not work ",error);
-
+                        console.log("Did not work ", error.responseJSON.errors); // Log the validation errors
                     },
                 });
             });
@@ -218,6 +219,7 @@
                     },
                     error: function(jqXHR, textStatus, errorThrown) {
                         console.error('AJAX Error:', textStatus, errorThrown);
+                        console.log("Did not work ", error.responseJSON.errors); // Log the validation errors
                     }
                 });
 

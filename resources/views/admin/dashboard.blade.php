@@ -88,7 +88,7 @@
                 <li>
                     <i class='bx bxs-dollar-circle'></i>
                     <span class="text">
-                        <h3>3</h3>
+                        <h3>Coming Soon...</h3>
                         <p>Current Promos</p>
                     </span>
                 </li>
@@ -126,11 +126,11 @@
                     </div>
                     <ul class="todo-list">
                         @foreach($featured_batteries as $battery)
-                            <li class="completed">
-                                <p>{{$battery->name}}</p>
-                                <i class='bx bx-dots-vertical-rounded'></i>
-                            </li>
-                        @endforeach 
+                        <li class="completed">
+                            <p>{{$battery->name}}</p>
+                            <i class='bx bx-dots-vertical-rounded'></i>
+                        </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>

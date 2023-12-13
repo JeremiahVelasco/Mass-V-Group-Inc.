@@ -36,10 +36,10 @@
         <div class="hero">
             <div class="content">
                 <p id="company">MVG CIRCLE 1001 CORP.</p>
-                <h1> <strong>Leading</strong> Importer and Distributor of <strong>Automotive Batteries, Oil, and Lubricants</strong> in the Philippines</h1>
-                <p id="minor">Nationwide distribution network of more than <strong>800</strong> outlets/dealers.</p>
-                <button id="cta">Select Vehicle</button>
-                <button id="contact-button">Contact Us</button>
+                <h1>Leading Importer and Distributor of <strong>Automotive Batteries, Oil, and Lubricants</strong> in the Philippines</h1>
+                <p id="minor"><strong>Nationwide distribution network</strong> of more than 800 outlets/dealers</p>
+                <a class="hero-btns" href="#section2" id="cta">Select Vehicle</a>
+                <a class="hero-btns" href="/contact" id="contact-button">Contact Us</a>
             </div>
             <div class="image">
                 <img src="assets/Mega Force Plus.png" alt="megaforce battery">
@@ -50,15 +50,18 @@
 
     <!--SECTION 1-->
     <section class="section1">
-        @foreach($products as $product)
-        <div class="card">
-            <img id="featured-image" src="{{ $product -> image }}" alt="">
-            <div class="featured-details">
-                <h2>{{ $product -> name }}</h2>
-                <p>{{ $product -> description}}</p>
+        <h1>Featured Products</h1>
+        <div class="fp-container">
+            @foreach($products as $product)
+            <div class="card">
+                <img id="featured-image" src="{{ $product -> image }}" alt="">
+                <div class="featured-details">
+                    <h2>{{ $product -> name }}</h2>
+                    <p>{{ $product -> description}}</p>
+                </div>
             </div>
+            @endforeach
         </div>
-        @endforeach
     </section>
 
 

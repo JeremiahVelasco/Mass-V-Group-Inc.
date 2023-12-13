@@ -151,51 +151,51 @@
         const product1 = document.getElementById('feature-one');
         const product2 = document.getElementById('feature-two');
         //const product3 = document.getElementById('feature-three');
-        function renderSavedProducts(){
+        function renderSavedProducts() {
             $.ajax({
-                type:'GET',
-                url:"/getSavedProducts",
-                success:function(response){
-                    if(response.success){
-                        let results=response.data;
-                        results.forEach(result=>{
-                            const num=result.saved_slot;
-                            let imageContentSelector="#image-content-"+num;
-                            let headerSelector="#header-"+num;
-                            $(imageContentSelector).attr("src",result.image);
+                type: 'GET',
+                url: "/getSavedProducts",
+                success: function(response) {
+                    if (response.success) {
+                        let results = response.data;
+                        results.forEach(result => {
+                            const num = result.saved_slot;
+                            let imageContentSelector = "#image-content-" + num;
+                            let headerSelector = "#header-" + num;
+                            $(imageContentSelector).attr("src", result.image);
                             $(headerSelector).text(result.name);
                         });
-                    }
-                    else{
+                    } else {
                         console.log('No existing products');
                     }
                 },
-                error:function(error){
-                    console.error('Error fetching saved battery',error);
+                error: function(error) {
+                    console.error('Error fetching saved battery', error);
                 }
             })
         }
+
         function saveBattery(num) {
             let batteryIdSelector = "#feature-" + num;
             let selectedBatteryId = $(batteryIdSelector).val();
-            let csrfHeader=$('meta[name="csrf-token"]').attr('content');
+            let csrfHeader = $('meta[name="csrf-token"]').attr('content');
             if (selectedBatteryId !== 'default') {
                 //update save_slot of given battery id
                 $.ajax({
                     type: "POST",
                     url: `/saveBattery/${selectedBatteryId}/${num}`,
-                    headers:{
-                        'X-CSRF-TOKEN':csrfHeader
+                    headers: {
+                        'X-CSRF-TOKEN': csrfHeader
                     },
                     success: function(response) {
                         // Update the details on the page
-                        if(response.success){
+                        if (response.success) {
                             console.log(response.message);
                             renderSavedProducts();
                         }
                     },
                     error: function(error) {
-                        console.log("Error saving battery details",error);
+                        console.log("Error saving battery details", error);
                     }
                 });
             } else {

@@ -45,6 +45,11 @@ Route::get('/adminpromos', function () {
 //USER ROUTES
 Route::get('/', [AdminController::class, 'home'])->name('home');
 
+//ADMIN REGISTER LOGIN
+Route::get('/adminlogin', function () {
+    return view('admin.login');
+});
+
 
 //ADMIN GET
 Route::get('/admindashboard', [AdminController::class, 'admindashboard'])->name('admindashboard');

@@ -87,7 +87,7 @@ class AdminController extends Controller
                 'jis_type' => $data['jis_type'],
                 'warranty' => $data['warranty'],
                 'description' => $data['description'],
-                'saved_slot'=>0,
+                'saved_slot' => 0,
             ]);
     }
 
@@ -106,11 +106,11 @@ class AdminController extends Controller
     {
         $name = $request->input('name');
 
-        $patient = DB::table('batteries')
+        $product = DB::table('batteries')
             ->where('name', $name)
             ->first();
 
-        if ($patient) {
+        if ($product) {
             $result = DB::table('batteries')
                 ->where('name', $name)
                 ->delete();

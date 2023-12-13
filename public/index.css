@@ -27,8 +27,8 @@ nav {
 }
 
 .nav-links img {
-    height: 28px;
-    border-radius: 10px;
+    height: 32px;
+    border-radius: 5px;
 }
 
 .nav-links a {
@@ -77,15 +77,14 @@ strong {
 }
 
 .hero .content #minor {
-    margin-top: 1rem;
+    margin: 1rem 0 2rem 0;
     font-size: 22px;
     font-weight: 100;
 }
 
-.hero .content button {
-    margin-top: 80px;
+.hero .content .hero-btns {
     width: 200px;
-    padding: .8rem;
+    padding: .6rem;
     border: none;
     border-radius: 15px;
     font-size: 16px;
@@ -93,6 +92,7 @@ strong {
     cursor: pointer;
     background: none;
     color: #333333;
+    text-decoration: none;
 }
 
 .hero .content #contact-button:hover {
@@ -142,11 +142,20 @@ button:active {
 }
 
 .section1 {
+    align-items: center;
+    padding: 25px;
+    background: rgb(245, 245, 245);
+}
+
+.section1 h1 {
+    text-align: center;
+    font-size: 42px;
+    margin-bottom: 3rem;
+}
+
+.fp-container {
     display: flex;
     justify-content: space-around;
-    align-items: center;
-    height: 40vh;
-    background: rgb(245, 245, 245);
 }
 
 .card {
@@ -170,7 +179,6 @@ button:active {
 
 .featured-details {
     height: 200px;
-    padding: 15px;
 }
 
 .section2 {
@@ -340,10 +348,18 @@ button:active {
     width: 600px;
 }
 
+.products {
+    background: linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)), url('assets/oil.jpg');
+    background-position: bottom;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
 .products h1 {
     text-align: center;
     font-size: 42px;
-    margin-top: 2rem;
+    padding-top: 2.5rem;
+    color: #fff;
 }
 
 .products .product-container {
@@ -361,6 +377,14 @@ button:active {
     list-style: none;
     font-size: 18px;
     margin-top: 1rem;
+}
+
+.product-card h2 {
+    color: #fff;
+}
+
+.product-card li {
+    color: #fff;
 }
 
 .product-card button {
@@ -463,6 +487,7 @@ textarea {
 .contact-form button:hover {
     background: #114ef5;
 }
+
 
 @media only screen and (max-width: 600px) {
     .nav {

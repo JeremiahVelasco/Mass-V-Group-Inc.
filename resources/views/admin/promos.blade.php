@@ -66,15 +66,14 @@
                 <img src="assets/people.png">
             </a>
         </nav>
-        <!-- NAVBAR -->
-        <!-- MAIN -->
         <main>
             <div class="head-title">
                 <div class="left">
                     <h1>Promos</h1>
                 </div>
             </div>
-
+            <h1 class="cs">COMING SOON...</h1>
+            <!-- FOR FUTURE VERSION
             <div class="table-data">
 
                 <div class="todo">
@@ -99,7 +98,8 @@
                 </div>
             </div>
         </main>
-        <!-- MAIN -->
+         MAIN
+-->
     </section>
     <!-- CONTENT -->
 
