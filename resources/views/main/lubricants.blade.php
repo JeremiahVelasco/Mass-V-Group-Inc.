@@ -11,25 +11,51 @@
 </head>
 
 <body>
-    <header>
-        <nav>
-            <div class="logo">
-                <img src="assets/MVG Circle 1001 Logo PNG 2 - RGB.jpg">
+    <header class="header">
+        <nav class="nav container">
+            <div class="nav__data">
+                <a href="/" class="nav__logo">
+                    <img src="assets/MVG Circle 1001 Logo PNG 2 - RGB.png">
+                    <h1>Mass V Group Inc.</h1>
+                </a>
+
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class="ri-menu-line nav__burger"></i>
+                    <i class="ri-close-line nav__close"></i>
+                </div>
             </div>
-            <ul class="nav-links">
-                <li><a href="/">Home</a></li>
-                <li><a href="/products">Batteries</a></li>
-                <li><a href="/lubricants">Samic Lubricants</a></li>
-                <li><a href="/contact">Contact Us</a></li>
-                <li><a href="https://www.facebook.com/massvgroup/"><img src="assets/fb.png"></a></li>
-                <li><a href="https://www.facebook.com/MegaforcePrimeraSuperkingPH/?paipv=0&eav=AfYspb5RCyF8uhVvcBzAiz5yyI6d3hcW06IPDc0T8lWrDRYIwa9oYlNccmFe9PSIel8&_rdr"><img src="assets/mf.png"></a></li>
-                <!--
-                <li><a href="#"><i class="fa-solid fa-phone"></i> (+632) 3454-7355</a></li>
-                <li><a href="https://samiclubricants.com/"><img src="assets/shopee.png"></a></li>
-                <li><a href="#"><img src="assets/lazada.png"></a></li>
-                <li><a href="#"><img src="assets/tiktok.jpeg"></a></li>
-                -->
-            </ul>
+
+            <!--=============== NAV MENU ===============-->
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li><a href="/" class="nav__link">Home</a></li>
+                    <li><a href="/products" class="nav__link">Batteries</a></li>
+                    <li class="dropdown__item">
+                        <div class="nav__link">
+                            <a href="/lubricants">Lubricants</a>
+                        </div>
+
+                        <ul class="dropdown__menu">
+                            <li>
+                                <a href="#" class="dropdown__link">
+                                    <i class="ri-user-line"></i> SAMIC Catalog
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="dropdown__link">
+                                    <i class="ri-lock-line"></i> SAMIC Product List
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li><a href="/contact" class="nav__link">Contact Us</a></li>
+                    <li><a href="https://www.facebook.com/massvgroup/" class="nav__link"><img src="assets/fb.png"></a></li>
+                    <li><a href="https://samiclubricants.com/" class="nav__link"><img src="assets/Samic- Logo- Blue (Edited 3).png"></a></li>
+                    </li>
+                </ul>
+            </div>
         </nav>
     </header>
 
