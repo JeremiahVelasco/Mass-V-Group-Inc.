@@ -14,10 +14,11 @@
 
 <body class="login">
     <img id="form-logo" src="assets/MVG Circle 1001 Logo PNG 2 - RGB.png" alt="Mass V Group Logo">
-    <h1>Login</h1>
+    <h1>Register</h1>
     <form action="" id="login-form">
         <input type="text" placeholder="Username" id="username">
         <input type="password" placeholder="Password" id="password">
+        <input type="password" placeholder="Confirm Password" id="confirm-password">
         <button id="login-btn" type="submit">Login</button>
     </form>
 </body>

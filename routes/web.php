@@ -50,6 +50,10 @@ Route::get('/adminlogin', function () {
     return view('admin.login');
 });
 
+Route::get('/adminregister', function () {
+    return view('admin.register');
+});
+
 
 //ADMIN GET
 Route::get('/admindashboard', [AdminController::class, 'admindashboard'])->name('admindashboard');
