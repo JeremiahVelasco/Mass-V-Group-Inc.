@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Batteries;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller
 {
@@ -18,6 +20,25 @@ class AdminController extends Controller
             ->get();
 
         return view('main.index', ['products' => $data]);
+    }
+
+    public function loginAdmin(Request $request){
+        $credentials=$request->validate([
+            'user'=>'required',
+            'password'=>'required',
+        ]);
+        if(Auth::guard('admins')->attempt($credentials)){
+            //user is within the table database keep that in mind
+            $admin=Auth::guard('admins')->user();
+            $request->session()->put('adminsuccess',true);
+            return response()->json(['success'=>true]);
+        }
+        return response()->json(['success'=>false]);
+    }
+
+    public function logoutAdmin(){
+        Session::forget('adminsuccess');
+        return redirect('/adminlogin');
     }
 
     public function admindashboard(Request $request)
@@ -105,26 +126,11 @@ class AdminController extends Controller
     public function deleteProduct(Request $request)
     {
         $name = $request->input('name');
-
-        $product = DB::table('batteries')
-            ->where('name', $name)
-            ->first();
-
-        if ($product) {
-            $result = DB::table('batteries')
-                ->where('name', $name)
-                ->delete();
-
-            if ($result) {
-                return response()->json(['success' => true]);
-            } else {
-                return response()->json(['message' => 'Failed to delete product'], 500);
-            }
-        } else {
-            return response()->json(['message' => 'Product not found'], 404);
-        }
+        $result=DB::table('batteries')
+            ->where('name',$name)
+            ->delete();
+        return response()->json(['success'=>true]);
     }
-
     public function getDetails($id)
     {
         $battery = Batteries::find($id);
@@ -174,5 +180,36 @@ class AdminController extends Controller
         }
         $this->saveBatteryData($id, $slot);
         return response()->json(['success' => true, 'message' => 'Saved on slot' . $slot]);
+    }
+
+    public function usernameExists(Request $request){
+        $username=$request->input('username');
+        $result=DB::table('admins')
+            ->where('user',$username)
+            ->first();
+        if($result){
+            return response()->json(['success'=>true]);
+        }
+        return response()->json(['success'=>false]);
+    }
+
+    public function registerAdmin(Request $request){
+        $request->validate([
+            'username'=>'required',
+            'password'=>'required'
+        ]);
+        $data=[
+            'username'=>$request->input('username'),
+            'password'=>bcrypt($request->input('password'))
+        ];
+        $this->insertAdmin($data);
+        return response()->json(['success'=>true]);
+    }
+    public function insertAdmin($data){
+        DB::table('admins')
+            ->insert([
+                'user'=>$data['username'],
+                'password'=>$data['password']
+            ]);
     }
 }

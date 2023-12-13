@@ -15,7 +15,11 @@
 
 <body>
 
-
+    @if(!session('adminsuccess'))
+        <script>
+            window.location.href="/adminlogin";
+        </script>
+    @endif
     <!-- SIDEBAR -->
     <section id="sidebar">
         <a href="#" class="brand">
@@ -100,7 +104,7 @@
                                     <p>{{ $battery->name}}</p>
                                 </td>
                                 <td><span class="status completed">{{ $battery->mvgi}}</span></td>
-                                <td><a href="#" data-name="{{ $battery['name'] }}" class="delete"><i class="fa-solid fa-trash-can"></i> Delete </a></td>
+                                <td><a href="#" onclick="removeProduct('{{ $battery->name }}')" class="delete"><i class="fa-solid fa-trash-can"></i> Delete </a></td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -108,9 +112,8 @@
                 </div>
             </div>
             <div class="modal hidden">
-                <form id="add-product-form" class="add-product-form">
+                <form id="add-product-form" class="add-product-form" enctype="multipart/form-data">
                     <h1>Add Product</h1>
-                    @csrf
                     <label for="image">Image</label>
                     <input type="file" id="image" name="image">
                     <label for="name">Name</label>
@@ -139,91 +142,82 @@
         const modal = document.querySelector('.modal');
         const cancel = document.getElementById('cancel');
 
+        function removeProduct(name){
+            $.ajax({
+                type: 'POST',
+                url: '/deleteProduct',
+                data: {
+                    name: name,
+                },
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                },
+                success: function(response) {
+                    if (response.success) {
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'Successfuly Deleted',
+                            showConfirmButton: true,
+                            confirmButtonColor: '#F27574',
+                            timer: 2500
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                // Reload the page
+                                location.reload();
+                            }
+                        });
+                    } else {
+                        console.log("Failed to Delete")
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.error('AJAX Error:', textStatus, errorThrown);
+                    console.log("Did not work ", error.responseJSON.errors); // Log the validation errors
+                }
+            });
+        }
         add.addEventListener('click', function() {
             modal.classList.remove('hidden')
             modal.classList.add('active');
         });
-
         cancel.addEventListener('click', function() {
             modal.classList.remove('active');
             modal.classList.add('hidden');
         });
-
-        $(document).ready(function() {
-            $("#add-product-form").submit(function(event) {
-                event.preventDefault();
-                let formData = new FormData();
-                let imageFile = document.getElementById('image').files[0];
-                formData.append("image", imageFile);
-                formData.append("name", $("#name").val());
-                formData.append("mvgi", $("#mvgi").val());
-                formData.append("jis_type", $("#jis_type").val());
-                formData.append("warranty", $("#warranty").val());
-                formData.append("description", $("#description").val())
-                var csrfToken = $('meta[name="csrf-token"]').attr('content');
-                console.log(formData);
-                console.log(imageFile);
-                $.ajax({
-                    type: "POST",
-                    url: "/addProduct",
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    headers: {
-                        'X-CSRF-TOKEN': csrfToken,
-                    },
-                    success: function(response) {
-                        Swal.fire("Success!", "Product added successfully.", "success");
-                        location.reload();
-                    },
-                    error: function(error) {
-                        console.log("Did not work ", error.responseJSON.errors); // Log the validation errors
-                    },
-                });
+        $('#add-product-form').submit((event)=>{
+            event.preventDefault();
+            let imageFile=$("#image")[0].files[0];
+            let name=$("#name").val();
+            let mvgi=$("#mvgi").val();
+            let jis_type=$("#jis_type").val();
+            let warranty=$("#warranty").val();
+            let description=$("#description").val();
+            let csrfToken = $('meta[name="csrf-token"]').attr('content'); 
+            var form_data=new FormData();
+            form_data.append('image',imageFile);
+            form_data.append('name',name);
+            form_data.append('mvgi',mvgi);
+            form_data.append('jis_type',jis_type);
+            form_data.append('warranty',warranty);
+            form_data.append('description',description);
+            $.ajax({
+                type: "POST",
+                url: "/addProduct",
+                data:form_data,
+                processData: false,
+                contentType: false,
+                headers: {
+                    'X-CSRF-TOKEN': csrfToken,
+                },
+                success: function(response) {
+                    Swal.fire("Success!", "Product added successfully.", "success");
+                    location.reload();
+                },
+                error: function(error) {
+                    console.log("Did not work ", error.responseJSON.errors); // Log the validation errors
+                }
             });
-        });
-
-        document.addEventListener('click', function(e) {
-            if (e.target.classList.contains('delete')) {
-                e.preventDefault();
-                const name = e.target.getAttribute('data-name');
-
-                // Send an AJAX request to the getRecords function in the controller
-                $.ajax({
-                    type: 'POST',
-                    url: '/deleteProduct',
-                    data: {
-                        name: name,
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                    },
-                    success: function(response) {
-                        if (response.success) {
-                            Swal.fire({
-                                position: 'center',
-                                icon: 'success',
-                                title: 'Successfuly Deleted',
-                                showConfirmButton: true,
-                                confirmButtonColor: '#F27574',
-                                timer: 2500
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    // Reload the page
-                                    location.reload();
-                                }
-                            });
-                        } else {
-                            console.log("Failed to Delete")
-                        }
-                    },
-                    error: function(jqXHR, textStatus, errorThrown) {
-                        console.error('AJAX Error:', textStatus, errorThrown);
-                        console.log("Did not work ", error.responseJSON.errors); // Log the validation errors
-                    }
-                });
-
-            }
         });
     </script>
 </body>
