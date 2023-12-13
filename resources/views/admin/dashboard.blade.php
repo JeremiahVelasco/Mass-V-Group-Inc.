@@ -125,7 +125,7 @@
                         <h3>Featured Products</h3>
                     </div>
                     <ul class="todo-list">
-                        @foreach($batteries as $battery)
+                        @foreach($featured_batteries as $battery)
                             <li class="completed">
                                 <p>{{$battery->name}}</p>
                                 <i class='bx bx-dots-vertical-rounded'></i>

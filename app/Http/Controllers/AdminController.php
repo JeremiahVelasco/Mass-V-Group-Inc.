@@ -23,8 +23,13 @@ class AdminController extends Controller
     public function admindashboard(Request $request)
     {
         $products = DB::table('batteries')->get();
+        $featured = DB::table('batteries')
+            ->where('saved_slot','!=',0)
+            ->orderBy('saved_slot','asc')
+            ->get();
         $product_count=DB::table('batteries')->count(); 
-        return view('admin.dashboard', ['batteries'=>$products,'battery_count'=>$product_count]);
+        return view('admin.dashboard', ['batteries'=>$products,
+        'battery_count'=>$product_count,'featured_batteries'=>$featured]);
     }
 
 
