@@ -81,7 +81,7 @@
                 <li>
                     <i class='bx bxs-calendar-check'></i>
                     <span class="text">
-                        <h3>{{ $totalRows }}</h3>
+                        <h3>{{ $battery_count }}</h3>
                         <p>Total Products</p>
                     </span>
                 </li>
@@ -125,18 +125,12 @@
                         <h3>Featured Products</h3>
                     </div>
                     <ul class="todo-list">
-                        <li class="completed">
-                            <p>SuperKing LM</p>
-                            <i class='bx bx-dots-vertical-rounded'></i>
-                        </li>
-                        <li class="completed">
-                            <p>Primera LM</p>
-                            <i class='bx bx-dots-vertical-rounded'></i>
-                        </li>
-                        <li class="completed">
-                            <p>Megaforce LM</p>
-                            <i class='bx bx-dots-vertical-rounded'></i>
-                        </li>
+                        @foreach($featured_batteries as $battery)
+                            <li class="completed">
+                                <p>{{$battery->name}}</p>
+                                <i class='bx bx-dots-vertical-rounded'></i>
+                            </li>
+                        @endforeach 
                     </ul>
                 </div>
             </div>
