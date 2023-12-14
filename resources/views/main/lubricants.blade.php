@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mass V Group Inc. - Products</title>
     <link rel="stylesheet" href="index.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="icon" href="assets/MVG Circle 1001 Logo PNG 2 - RGB.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -37,14 +38,14 @@
 
                         <ul class="dropdown__menu">
                             <li>
-                                <a href="#" class="dropdown__link">
-                                    <i class="ri-user-line"></i> SAMIC Catalog
+                                <a href="/lubricants#samic-catalog" class="dropdown__link">
+                                    <i class="ri-store-3-line"></i> SAMIC Catalog
                                 </a>
                             </li>
 
                             <li>
-                                <a href="#" class="dropdown__link">
-                                    <i class="ri-lock-line"></i> SAMIC Product List
+                                <a href="/lubricants#samic-product-list" class="dropdown__link">
+                                    <i class="ri-pages-line"></i> SAMIC Product List
                                 </a>
                             </li>
                         </ul>
@@ -59,63 +60,32 @@
         </nav>
     </header>
 
-    <section class="products">
+    <section class="lubricants">
+        <img src="assets/samic-collection.png" alt="">
         <h1>SAMIC Lubricants</h1>
-        <div class="product-container">
-            <div class="product-card">
-                <img src="assets/megaforce.webp" alt="megaforce batteries">
-                <h2>MEGA FORCE</h2>
-                <ul class="main-details">
-                    <li>High Performance Battery</li>
-                    <li>Maintenance-Free Variants</li>
-                    <li>Low-Maintenance Variants</li>
-                </ul>
-                <br>
-                <ul class="misc">
-                    <li>More Plates + Polyethylene Envelope Separators</li>
-                    <li>For Performance and Worry-Free Application</li>
-                    <li>Extended Life | 18 Months Warranty</li>
-                </ul>
-                <button>Inquire</button>
-            </div>
+        <h3>Lubricants Specialist in Automotive, Marine, Industrial and Commercial</h3>
+        <ul>
+            <li>From U.A.E.</li>
+            <li>Finest base oil procured from Exxon Mobil, Korean and European Refineries</li>
+            <li>Superior additives from Afton, Chevron, Infinium and Lubrizol</li>
+        </ul>
+    </section>
 
-            <div class="product-card">
-                <img src="assets/New Primera LM - Front.png" alt="primera batteries">
-                <h2>PRIMERA</h2>
-                <ul class="main-details">
-                    <li>Re-engineered Elements</li>
-                    <li>Low-Maintenance</li>
-                </ul>
-                <br>
-                <ul class="misc">
-                    <li>Perfect Balance Between Cost and Quality</li>
-                    <li>General Purpose and Wide Product Application</li>
-                    <li>12 Months Warranty</li>
-                </ul>
-                <button>Inquire</button>
-            </div>
-
-            <div class="product-card">
-                <img src="assets/Sking.png" alt="superking batteries">
-                <h2>SUPERKING</h2>
-                <ul class="main-details">
-                    <li>Hybrid Reinforced | Ideal for Tropical Climate</li>
-                    <li>Low-Maintenance</li>
-                </ul>
-                <br>
-                <ul class="misc">
-                    <li>Tactical Brand with Hybrid-Reinforced Plates</li>
-                    <li> Economical Option for Commercial and Industrial Applications</li>
-                    <li>6 Months Warranty</li>
-                </ul>
-                <button>Inquire</button>
-            </div>
+    <section class="catalog">
+        <h1 class="catalog-title">SAMIC Catalog</h1>
+        <div class="embed-container" id="catalog">
+            <embed id="samic-catalog" src="samic-catalog.pdf" type="application/pdf">
+        </div>
+        <h1 class="catalog-title">SAMIC Product List</h1>
+        <div class="embed-container" id="list">
+            <embed id="samic-product-list" src="samic-product-list.pdf" type="application/pdf">
         </div>
     </section>
 
     <footer>
 
     </footer>
+    <script src="main.js"></script>
 </body>
 
 </html>

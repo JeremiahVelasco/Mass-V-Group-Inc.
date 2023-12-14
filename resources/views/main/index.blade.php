@@ -39,14 +39,14 @@
 
                         <ul class="dropdown__menu">
                             <li>
-                                <a href="#" class="dropdown__link">
-                                    <i class="ri-user-line"></i> SAMIC Catalog
+                                <a href="/lubricants#samic-catalog" class="dropdown__link">
+                                    <i class="ri-store-3-line"></i> SAMIC Catalog
                                 </a>
                             </li>
 
                             <li>
-                                <a href="#" class="dropdown__link">
-                                    <i class="ri-lock-line"></i> SAMIC Product List
+                                <a href="/lubricants#samic-product-list" class="dropdown__link">
+                                    <i class="ri-pages-line"></i> SAMIC Product List
                                 </a>
                             </li>
                         </ul>

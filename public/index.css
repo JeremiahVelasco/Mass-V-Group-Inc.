@@ -83,7 +83,7 @@
   .nav__logo, 
   .nav__burger, 
   .nav__close {
-    color: var(--white-color);
+    color: #0C38AC;
   }
   
   .nav__data {
@@ -650,11 +650,34 @@ button:active {
     width: 600px;
 }
 
-.products {
+.products, .lubricants {
     background: linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)), url('assets/oil.jpg');
     background-position: bottom;
     background-size: cover;
     background-attachment: fixed;
+    min-height: 90vh;
+}
+
+.lubricants {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.lubricants h1 {
+  color: #fff;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.lubricants h3, .lubricants ul li {
+  color: #fff;
+}
+
+.lubricants ul {
+  margin-top: 1rem;
 }
 
 .products h1 {
@@ -708,6 +731,27 @@ button:active {
     transform: scale(1.05);
 }
 
+.catalog {
+  padding: 2rem 6%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.catalog-title {
+  text-align: center;
+  padding: 25px;
+  font-size: 42px;
+}
+
+#samic-catalog, #samic-product-list {
+  height: 100vh;
+  width: 80vw;
+  border-radius: 25px;
+}
+
 /*CONTACT US*/
 .contact {
     min-height: 90vh;
@@ -744,13 +788,11 @@ button:active {
 
 .contact-form form h2 {
     margin-bottom: 1rem;
-    color: #0C38AD;
 }
 
 .contact-form label {
     margin: 1rem 0 .3rem;
     font-weight: 500;
-    color: #0C38AD;
 }
 
 .contact-form form input {
@@ -887,10 +929,17 @@ textarea {
     .mv-card {
         width: 380px;
     }
+    .products {
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      min-height: 100vh;
+      background-size: cover;
+      background-position: center;
+    }
     .products .product-container  {
         flex-direction: column;
-        min-height: 100vh;
-        margin-top: 140%;
+        min-height: 250vh;
+        
         align-items: center;
         justify-content: space-evenly;
     }

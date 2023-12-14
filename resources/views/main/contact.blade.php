@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mass V Group Inc. - Products</title>
+    <title>Mass V Group Inc. - Contact Us</title>
     <link rel="stylesheet" href="index.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="icon" href="assets/MVG Circle 1001 Logo PNG 2 - RGB.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -37,14 +38,14 @@
 
                         <ul class="dropdown__menu">
                             <li>
-                                <a href="#" class="dropdown__link">
-                                    <i class="ri-user-line"></i> SAMIC Catalog
+                                <a href="/lubricants#samic-catalog" class="dropdown__link">
+                                    <i class="ri-store-3-line"></i> SAMIC Catalog
                                 </a>
                             </li>
 
                             <li>
-                                <a href="#" class="dropdown__link">
-                                    <i class="ri-lock-line"></i> SAMIC Product List
+                                <a href="/lubricants#samic-product-list" class="dropdown__link">
+                                    <i class="ri-pages-line"></i> SAMIC Product List
                                 </a>
                             </li>
                         </ul>
@@ -84,6 +85,7 @@
     <footer>
 
     </footer>
+    <script src="main.js"></script>
 </body>
 
 </html>
