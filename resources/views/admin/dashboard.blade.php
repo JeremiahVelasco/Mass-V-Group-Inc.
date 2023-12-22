@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/admin.css">
-    <link rel="icon" href="assets/MVG Circle 1001 Logo PNG 2 - RGB.png">
+    <link rel="icon" href="/assets/MVG Circle 1001 Logo PNG 2 - RGB.png">
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <title>MVG Admin</title>
@@ -15,36 +15,36 @@
 
     @if(!session('adminsuccess'))
         <script>
-            window.location.href="/adminlogin";
+            window.location.href="/admin";
         </script>
     @endif
     <!-- SIDEBAR -->
     <section id="sidebar">
         <a href="#" class="brand">
-            <img class="logo" src="assets/MVG Circle 1001 Logo PNG 2 - RGB.png" alt="">
+            <img class="logo" src="/assets/MVG Circle 1001 Logo PNG 2 - RGB.png" alt="">
             <span class="text">MVG Admin</span>
         </a>
         <ul class="side-menu top">
             <li class="active">
-                <a href="/admindashboard">
+                <a href="/admin/dashboard">
                     <i class='bx bxs-dashboard'></i>
                     <span class="text">Dashboard</span>
                 </a>
             </li>
             <li>
-                <a href="/adminfeaturedproducts">
+                <a href="/admin/featured">
                     <i class='bx bxs-shopping-bag-alt'></i>
                     <span class="text">Featured Products</span>
                 </a>
             </li>
             <li>
-                <a href="/adminproducts">
+                <a href="/admin/products">
                     <i class='bx bxs-doughnut-chart'></i>
                     <span class="text">Products</span>
                 </a>
             </li>
             <li>
-                <a href="/adminpromos">
+                <a href="/admin/promos">
                     <i class='bx bxs-message-dots'></i>
                     <span class="text">Promos</span>
                 </a>
@@ -68,7 +68,7 @@
         <nav>
             <i class='bx bx-menu'></i>
             <a href="#" class="profile">
-                <img src="assets/people.png">
+                <img src="/assets/people.png">
             </a>
         </nav>
         <!-- NAVBAR -->
@@ -115,7 +115,7 @@
                             @foreach($batteries as $battery)
                             <tr>
                                 <td>
-                                    <img src="{{ $battery->image}}">
+                                    <img src="/{{ $battery->image}}">
                                     <p>{{ $battery->name}}</p>
                                 </td>
                                 <td><span class="status completed">{{ $battery->mvgi}}</span></td>
@@ -144,7 +144,7 @@
     <!-- CONTENT -->
 
 
-    <script src="script.js"></script>
+    <script src="/script.js"></script>
 </body>
 
 </html>

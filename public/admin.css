@@ -538,7 +538,42 @@ body {
 /* MAIN */
 /* CONTENT */
 
+/*PENDING*/
+.accept {
+	margin: 0 5px;
+	background: #0c38ac;
+	color: #fff;
+	padding: 6px;
+	border-radius: 15px;
+	font-size: 14px;
+	font-weight: 700;
+}
 
+.accept:hover {
+	background: #114ef5;
+}
+
+.reject {
+	margin: 0 5px;
+	background: red;
+	color: #fff;
+	padding: 6px;
+	border-radius: 15px;
+	font-size: 14px;
+	font-weight: 700;
+}
+
+.reject:hover {
+	background: rgb(192, 0, 0);
+}
+
+#action {
+	padding-left: 27%;
+}
+
+#buttons {
+	text-align: center;
+}
 
 
 
