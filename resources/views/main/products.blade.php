@@ -53,7 +53,7 @@
 
                     <li><a href="/contact" class="nav__link">Contact Us</a></li>
                     <li><a href="https://www.facebook.com/massvgroup/" class="nav__link"><img src="assets/fb.png"></a></li>
-                    <li><a href="https://samiclubricants.com/" class="nav__link"><img src="assets/Samic- Logo- Blue (Edited 3).png"></a></li>
+                    <li><a target="_blank" href="https://samiclubricants.com/" class="nav__link"><img src="assets/Samic- Logo- Blue (Edited 3).png"></a></li>
                     </li>
                 </ul>
             </div>
