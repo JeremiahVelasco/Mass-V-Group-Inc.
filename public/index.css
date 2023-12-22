@@ -35,6 +35,14 @@
 
 }
 
+body {
+  background: #e4e4e4;
+}
+
+nav li:hover {
+  border-bottom: 3px solid #0C38AD;
+}
+
 /*========== Responsive typography ==========*/
 @media screen and (min-width: 1024px) {
     :root {
@@ -485,7 +493,7 @@ button:active {
 
 .section2 {
     padding: 40px 4%;
-    background: linear-gradient(rgba(255,255,255,.4),rgba(255,255,255,.7)), url('assets/misc.jpg') no-repeat;
+    background: linear-gradient(rgba(28, 28, 28, 0.4),rgba(76, 76, 76, 0.7)), url('assets/misc.jpg') no-repeat;
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
@@ -494,6 +502,7 @@ button:active {
 .section2 h1 {
     text-align: center;
     font-size: 42px;
+    color: #fff;
 }
 
 .section-container {
