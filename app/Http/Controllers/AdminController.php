@@ -28,17 +28,25 @@ class AdminController extends Controller
             'password'=>'required',
         ]);
         if(Auth::guard('admins')->attempt($credentials)){
-            //user is within the table database keep that in mind
-            $admin=Auth::guard('admins')->user();
-            $request->session()->put('adminsuccess',true);
-            return response()->json(['success'=>true]);
+            //user is within the table database keep that in mind and user() represent userdata
+            $user_role=Auth::guard('admins')->user()->role;
+            $session_success_name="";
+            switch($user_role){
+                case 1:
+                    $request->session()->put("mastersuccess",true);
+                    break;
+                case 2:
+                    $request->session()->put("adminsuccess",true);
+                    break;
+            }
+            return response()->json(['success'=>true,'role'=>$user_role]);
         }
         return response()->json(['success'=>false]);
     }
 
     public function logoutAdmin(){
         Session::forget('adminsuccess');
-        return redirect('/adminlogin');
+        return redirect('/admin');
     }
 
     public function admindashboard(Request $request)
@@ -209,7 +217,8 @@ class AdminController extends Controller
         DB::table('admins')
             ->insert([
                 'user'=>$data['username'],
-                'password'=>$data['password']
+                'password'=>$data['password'],
+                'role'=>0
             ]);
     }
 }

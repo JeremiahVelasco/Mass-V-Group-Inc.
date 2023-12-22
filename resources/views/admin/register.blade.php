@@ -5,16 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="assets/MVG Circle 1001 Logo PNG 2 - RGB.png">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="/index.css">
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Admin Register</title>
+    <title>Employee Register</title>
 </head>
 
 <body class="login">
-    <img id="form-logo" src="assets/MVG Circle 1001 Logo PNG 2 - RGB.png" alt="Mass V Group Logo">
+    <img id="form-logo" src="/assets/MVG Circle 1001 Logo PNG 2 - RGB.png" alt="Mass V Group Logo">
     <h1>Register</h1>
     <form id="login-form">
         <input type="text" placeholder="Username" id="username" >
@@ -24,7 +24,7 @@
         <input type="password" placeholder="Confirm Password" id="confirm-password" disabled>
         <small id="confirm-password-err"></small>
         <button type="submit" id="login-btn">Register</button>
-        <a href="/adminlogin">Already have an account?Click Here</a>
+        <a href="/admin">Already have an account?Click Here</a>
     </form>
     <script>
         //********************************Input events and validations*********************
@@ -132,7 +132,7 @@
                     }).then((result) => {
                         if (result.isConfirmed) {
                             //Goto login
-                            window.location.href='/adminlogin';
+                            window.location.href='/admin';
                         }
                     });
                 },

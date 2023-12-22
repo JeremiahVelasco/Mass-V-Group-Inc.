@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\MasterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,19 +27,19 @@ Route::get('/contact', function () {
     return view('main.contact');
 });
 
-Route::get('/admindashboard', function () {
+Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');
 });
 
-Route::get('/adminfeaturedproducts', function () {
+Route::get('/admin/feature', function () {
     return view('admin.featuredproducts');
 });
 
-Route::get('/adminproducts', function () {
+Route::get('/admin/products', function () {
     return view('admin.products');
 });
 
-Route::get('/adminpromos', function () {
+Route::get('/admin/promos', function () {
     return view('admin.promos');
 });
 
@@ -46,11 +47,11 @@ Route::get('/adminpromos', function () {
 Route::get('/', [AdminController::class, 'home'])->name('home');
 
 //ADMIN REGISTER LOGIN AND LOGOUT
-Route::get('/adminlogin', function () {
+Route::get('/admin', function () {
     return view('admin.login');
 });
 
-Route::get('/adminregister', function () {
+Route::get('/admin/register', function () {
     return view('admin.register');
 });
 
@@ -58,10 +59,10 @@ Route::get('/logout',[AdminController::class,'logoutAdmin']);
 
 
 //ADMIN GET
-Route::get('/admindashboard', [AdminController::class, 'admindashboard'])->name('admindashboard');
-Route::get('/adminproducts', [AdminController::class, 'adminproducts'])->name('adminproducts');
-//Route::get('/adminlubricants', [AdminController::class, 'adminlubricants'])->name('adminlubricants');
-Route::get('/adminfeaturedproducts', [AdminController::class, 'adminfeaturedproducts'])->name('adminfeaturedproducts');
+Route::get('/admin/dashboard', [AdminController::class, 'admindashboard'])->name('admindashboard');
+Route::get('/admin/products', [AdminController::class, 'adminproducts'])->name('adminproducts');
+Route::get('/admin/lubricants', [AdminController::class, 'adminlubricants'])->name('adminlubricants');
+Route::get('/admin/featured', [AdminController::class, 'adminfeaturedproducts'])->name('adminfeaturedproducts');
 Route::get('/getBatteryDetails/{id}', [AdminController::class, 'getDetails'])->name('getDetails');
 Route::get('/getSavedProducts', [AdminController::class, 'getSavedData']);
 Route::get('/username-exists',[AdminController::class,'usernameExists']);
@@ -73,3 +74,14 @@ Route::post('/deleteProduct', [AdminController::class, 'deleteProduct']);
 Route::post('/saveBattery/{id}/{slot}', [AdminController::class, 'saveBattery']);
 Route::post('/registeradmin',[AdminController::class,'registerAdmin']);
 Route::post('/loginadmin',[AdminController::class,'loginAdmin']);
+
+//SUPERADMIN ROUTES
+Route::get('/master/dashboard',[MasterController::class,'masterdashboard']);
+Route::get('/master/user',[MasterController::class,'masteruser']);
+Route::get('/master/logout',[MasterController::class,'masterlogout']);
+Route::get('/master/pending',[MasterController::class,'masterpending']);
+
+//SUPERADMIN POST
+Route::post('/user-accept',[MasterController::class,'acceptUser']);
+Route::post('/user-reject',[MasterController::class,'rejectUser']);
+Route::post('/delete-user',[MasterController::class,'rejectUser']);

@@ -10,7 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Admin Login</title>
+    <title>Employee Login</title>
 </head>
 <body class="login">
     <img id="form-logo" src="assets/MVG Circle 1001 Logo PNG 2 - RGB.png" alt="Mass V Group Logo">
@@ -21,7 +21,7 @@
         <input type="password" placeholder="Password" id="password">
         <small id='password-err'></small>
         <button id="login-btn" type="submit">Login</button>
-        <a href="/adminregister">New to MVG? Create Account</a>
+        <a id ="reg-link" href="/admin/register">New to MVG? Create Account</a>
     </form>
     <script>
         //********************************Input events and validations*********************
@@ -70,8 +70,15 @@
                     'X-CSRF-TOKEN': token
                 },
                 success:function(response){
-                    if(response.success){
-                        window.location.href='/admindashboard';
+                    if(response.success && response.role==1){
+                        console.log('Redirecting to /master/dashboard');
+                        window.location.href='/master/dashboard';
+                        return;
+                    }
+                    else if(response.success && response.role==2){
+                        console.log('Redirecting to /admin/dashboard');
+                        window.location.href='/admin/dashboard';
+                        return;
                     }
                     else{
                         $('#password-err').text('Incorrect Credentials!');
@@ -80,7 +87,8 @@
                 error:function(error){
                     console.error("Failed to register data: ",error);
                 }
-            })
+            });
+            //form_data.preventDefault();
         }
         $('#login-form').submit((event)=>{
             event.preventDefault();

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/admin.css">
-    <link rel="icon" href="assets/MVG Circle 1001 Logo PNG 2 - RGB.png">
+    <link rel="icon" href="/assets/MVG Circle 1001 Logo PNG 2 - RGB.png">
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -17,36 +17,36 @@
 
     @if(!session('adminsuccess'))
         <script>
-            window.location.href="/adminlogin";
+            window.location.href="/admin";
         </script>
     @endif
     <!-- SIDEBAR -->
     <section id="sidebar">
         <a href="#" class="brand">
-            <img class="logo" src="assets/MVG Circle 1001 Logo PNG 2 - RGB.png" alt="">
+            <img class="logo" src="/assets/MVG Circle 1001 Logo PNG 2 - RGB.png" alt="">
             <span class="text">MVG Admin</span>
         </a>
         <ul class="side-menu top">
             <li>
-                <a href="/admindashboard">
+                <a href="/admin/dashboard">
                     <i class='bx bxs-dashboard'></i>
                     <span class="text">Dashboard</span>
                 </a>
             </li>
             <li class="active">
-                <a href="/adminfeaturedproducts">
+                <a href="/admin/featured">
                     <i class='bx bxs-shopping-bag-alt'></i>
                     <span class="text">Featured Products</span>
                 </a>
             </li>
             <li>
-                <a href="/adminproducts">
+                <a href="/admin/products">
                     <i class='bx bxs-doughnut-chart'></i>
                     <span class="text">Products</span>
                 </a>
             </li>
             <li>
-                <a href="/adminpromos">
+                <a href="/admin/promos">
                     <i class='bx bxs-message-dots'></i>
                     <span class="text">Promos</span>
                 </a>
@@ -70,7 +70,7 @@
         <nav>
             <i class='bx bx-menu'></i>
             <a href="#" class="profile">
-                <img src="assets/people.png">
+                <img src="/assets/people.png">
             </a>
         </nav>
         <!-- NAVBAR -->
@@ -84,7 +84,7 @@
 
             <ul class="box-info">
                 <li>
-                    <img class="fp_image" src="assets/placeholder.png" id="image-content-1" alt="">
+                    <img class="fp_image" src="/assets/placeholder.png" id="image-content-1" alt="">
                     <span class="text">
                         <form action="">
                             <h3 id="header-1">Product 1</h3>
@@ -99,7 +99,7 @@
                     </span>
                 </li>
                 <li>
-                    <img class="fp_image" src="assets/placeholder.png" id="image-content-2" alt="">
+                    <img class="fp_image" src="/assets/placeholder.png" id="image-content-2" alt="">
                     <span class="text">
                         <form action="">
                             <h3 id="header-2">Product 2</h3>
@@ -114,7 +114,7 @@
                     </span>
                 </li>
                 <li>
-                    <img class="fp_image" src="assets/placeholder.png" id="image-content-3" alt="">
+                    <img class="fp_image" src="/assets/placeholder.png" id="image-content-3" alt="">
                     <span class="text">
                         <form action="">
                             <h3 id="header-3">Product 3</h3>
@@ -135,7 +135,7 @@
     <!-- CONTENT -->
 
 
-    <script src="script.js"></script>
+    <script src="/script.js"></script>
     <script>
         const product1 = document.getElementById('feature-one');
         const product2 = document.getElementById('feature-two');
@@ -153,7 +153,7 @@
                             let imageContentSelector = "#image-content-" + num;
                             let headerSelector = "#header-" + num;
                             let featureSelector = "#feature-"+num;
-                            $(imageContentSelector).attr("src", result.image);
+                            $(imageContentSelector).attr("src", "/"+result.image);
                             $(headerSelector).text(result.name);
                             $(featureSelector).val(result.id);
                         });
@@ -189,7 +189,7 @@
                                 h3.textContent='Product'+count;
                                 count++;
                             })
-                            $(".fp_image").attr('src','assets/placeholder.png');
+                            $(".fp_image").attr('src','/assets/placeholder.png');
                             $(".feature").val('default');
                             renderSavedProducts();
                         }
