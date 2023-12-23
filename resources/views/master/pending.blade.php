@@ -15,9 +15,9 @@
 
 <body>
     @if(!session('mastersuccess'))
-        <script>
-            window.location.href="/admin";
-        </script>
+    <script>
+        window.location.href = "/admin";
+    </script>
     @endif
     <!-- SIDEBAR -->
     <section id="sidebar">
@@ -34,7 +34,7 @@
             </li>
             <li class="active">
                 <a href="/master/pending">
-                    <i class='bx bxs-user-account'></i>
+                    <i class='bx bx-user-check'></i>
                     <span class="text">Grant Accounts</span>
                 </a>
             </li>
@@ -81,15 +81,12 @@
                         <h3>Pending Users</h3>
                     </div>
                     <table>
-                        @if($data_length<=0)
-                            No pending users
-                        @else
-                            <thead>
-                                <tr>
-                                    <th>UID</th>
-                                    <th>NAME</th>
-                                    <th id = "action">ACTION</th>
-                                </tr>
+                        @if($data_length<=0) No pending users @else <thead>
+                            <tr>
+                                <th>UID</th>
+                                <th>NAME</th>
+                                <th id="action">ACTION</th>
+                            </tr>
                             </thead>
                             <tbody>
                                 @foreach($pending_users as $user)
@@ -98,14 +95,14 @@
                                         <p>{{$user->id}}</p>
                                     </td>
                                     <td><span class="status completed">{{$user->user}}</span></td>
-                                    <td id = "buttons">
+                                    <td id="buttons">
                                         <a href="#" onclick="acceptUser({{ $user->id }})" class="accept"><i class="fa-solid fa-trash-can"></i> Accept </a>
                                         <a href="#" onclick="rejectUser({{ $user->id }})" class="reject"><i class="fa-solid fa-trash-can"></i> Reject </a>
                                     </td>
                                 </tr>
                                 @endforeach
                             </tbody>
-                        @endif
+                            @endif
                     </table>
                 </div>
             </div>
@@ -115,70 +112,71 @@
     <!-- CONTENT -->
     <script src="/script.js"></script>
     <script>
-        function acceptUser(id){
+        function acceptUser(id) {
             let csrfHeader = $('meta[name="csrf-token"]').attr('content');
             $.ajax({
-                    type: "POST",
-                    url:"/user-accept",
-                    data:{
-                        'uid':id
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': csrfHeader
-                    },
-                    success: function(response) {
-                        // Update the details on the page
-                        if (response.success) {
-                            Swal.fire({
-                                position: 'center',
-                                icon: 'success',
-                                title: `UID ${id} accepted`,
-                                showConfirmButton: true,
-                                confirmButtonText:'Reload page',
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    //Goto login
-                                    location.reload();
-                                }
-                            });
-                        }
-                    },
-                    error: function(error) {
-                        console.log("Error accepting user", error);
+                type: "POST",
+                url: "/user-accept",
+                data: {
+                    'uid': id
+                },
+                headers: {
+                    'X-CSRF-TOKEN': csrfHeader
+                },
+                success: function(response) {
+                    // Update the details on the page
+                    if (response.success) {
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: `UID ${id} accepted`,
+                            showConfirmButton: true,
+                            confirmButtonText: 'Reload page',
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                //Goto login
+                                location.reload();
+                            }
+                        });
                     }
+                },
+                error: function(error) {
+                    console.log("Error accepting user", error);
+                }
             });
         }
-        function rejectUser(id){
+
+        function rejectUser(id) {
             let csrfHeader = $('meta[name="csrf-token"]').attr('content');
             $.ajax({
-                    type: "POST",
-                    url:"/user-reject",
-                    data:{
-                        'uid':id
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': csrfHeader
-                    },
-                    success: function(response) {
-                        // Update the details on the page
-                        if (response.success) {
-                            Swal.fire({
-                                position: 'center',
-                                icon: 'success',
-                                title: `UID ${id} rejected`,
-                                showConfirmButton: true,
-                                confirmButtonText:'Reload page',
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    //Goto login
-                                    location.reload();
-                                }
-                            });
-                        }
-                    },
-                    error: function(error) {
-                        console.log("Error accepting user", error);
+                type: "POST",
+                url: "/user-reject",
+                data: {
+                    'uid': id
+                },
+                headers: {
+                    'X-CSRF-TOKEN': csrfHeader
+                },
+                success: function(response) {
+                    // Update the details on the page
+                    if (response.success) {
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: `UID ${id} rejected`,
+                            showConfirmButton: true,
+                            confirmButtonText: 'Reload page',
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                //Goto login
+                                location.reload();
+                            }
+                        });
                     }
+                },
+                error: function(error) {
+                    console.log("Error accepting user", error);
+                }
             });
         }
     </script>

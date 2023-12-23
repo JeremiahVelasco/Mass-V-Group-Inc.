@@ -15,9 +15,9 @@
 
 <body>
     @if(!session('mastersuccess'))
-        <script>
-            window.location.href="/admin";
-        </script>
+    <script>
+        window.location.href = "/admin";
+    </script>
     @endif
     <!-- SIDEBAR -->
     <section id="sidebar">
@@ -34,7 +34,7 @@
             </li>
             <li>
                 <a href="/master/pending">
-                    <i class='bx bxs-user-account'></i>
+                    <i class='bx bx-user-check'></i>
                     <span class="text">Grant Accounts</span>
                 </a>
             </li>
@@ -110,37 +110,37 @@
 
     <script src="/script.js"></script>
     <script>
-        function removeUser(id){
+        function removeUser(id) {
             let csrfHeader = $('meta[name="csrf-token"]').attr('content');
             $.ajax({
-                    type: "POST",
-                    url:"/delete-user",
-                    data:{
-                        'uid':id
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': csrfHeader
-                    },
-                    success: function(response) {
-                        // Update the details on the page
-                        if (response.success) {
-                            Swal.fire({
-                                position: 'center',
-                                icon: 'success',
-                                title: `UID ${id} deleted`,
-                                showConfirmButton: true,
-                                confirmButtonText:'Reload page',
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    //Goto login
-                                    location.reload();
-                                }
-                            });
-                        }
-                    },
-                    error: function(error) {
-                        console.log("Error accepting user", error);
+                type: "POST",
+                url: "/delete-user",
+                data: {
+                    'uid': id
+                },
+                headers: {
+                    'X-CSRF-TOKEN': csrfHeader
+                },
+                success: function(response) {
+                    // Update the details on the page
+                    if (response.success) {
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: `UID ${id} deleted`,
+                            showConfirmButton: true,
+                            confirmButtonText: 'Reload page',
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                //Goto login
+                                location.reload();
+                            }
+                        });
                     }
+                },
+                error: function(error) {
+                    console.log("Error accepting user", error);
+                }
             });
         }
     </script>

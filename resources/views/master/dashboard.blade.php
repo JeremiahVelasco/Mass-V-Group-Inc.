@@ -13,9 +13,9 @@
 
 <body>
     @if(!session('mastersuccess'))
-        <script>
-            window.location.href="/admin";
-        </script>
+    <script>
+        window.location.href = "/admin";
+    </script>
     @endif
     <!-- SIDEBAR -->
     <section id="sidebar">
@@ -32,7 +32,7 @@
             </li>
             <li>
                 <a href="/master/pending">
-                    <i class='bx bxs-user-account'></i>
+                    <i class='bx bx-user-check'></i>
                     <span class="text">Grant Accounts</span>
                 </a>
             </li>
