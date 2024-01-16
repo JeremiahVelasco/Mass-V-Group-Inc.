@@ -128,6 +128,21 @@
                         </form>
                     </span>
                 </li>
+                <li>
+                    <img class="fp_image" src="/assets/placeholder.png" id="image-content-4" alt="">
+                    <span class="text">
+                        <form action="">
+                            <h3 id="header-4">Product 4</h3>
+                            <select name="feature" id="feature-4">
+                                <option value="default">Default</option>
+                                @foreach($batteries as $battery)
+                                <option value="{{ $battery->id }}">{{ $battery->name }}</option>
+                                @endforeach
+                            </select>
+                            <button type="button" onclick="saveBattery(4)">Save</button>
+                        </form>
+                    </span>
+                </li>
             </ul>
         </main>
         <!-- MAIN -->
