@@ -258,6 +258,7 @@ nav li:hover {
   
   .dropdown__menu, 
   .dropdown__submenu {
+    margin: -15px 0 0 0;
     max-height: 0;
     overflow: hidden;
     transition: max-height .4s ease-out;
@@ -267,7 +268,7 @@ nav li:hover {
   /* Show dropdown menu & submenu */
   .dropdown__item:hover .dropdown__menu, 
   .dropdown__subitem:hover > .dropdown__submenu {
-    max-height: 1000px;
+    max-height: 100px;
     transition: max-height .4s ease-in;
   }
   
