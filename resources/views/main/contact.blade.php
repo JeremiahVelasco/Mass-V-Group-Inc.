@@ -62,7 +62,7 @@
                     <li><a target="_blank" href="https://samiclubricants.com/" class="nav__link"><img
                                 src="assets/Samic- Logo- Blue (Edited 3).png"></a></li>
                     </li>
-                    <li id = "message"><a href="/contact" class="nav__link">Message Us</a></li>
+                    <li id="message"><a href="/contact" class="nav__link">Message Us</a></li>
                 </ul>
             </div>
         </nav>

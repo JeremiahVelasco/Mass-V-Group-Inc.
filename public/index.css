@@ -121,15 +121,17 @@ nav li:hover {
   }
 
   #message {
-    border: 2px solid gray;
+    outline: 2px solid gray;
     border-radius: 4px;
-    padding: 5px 15px;
-    height: 35px;
+    padding: 4px 12px;
+    height: 30px;
     align-self: center;
+    background: #0C38AC;
   }
 
-  #message:hover {
+  #message a {
     background: #0C38AC;
+    color: #fff;
   }
 
   .nav__logo h1 {
