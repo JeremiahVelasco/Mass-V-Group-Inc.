@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
 :root {
-    --header-height: 3.5rem;
+    --header-height: 2.5rem;
   
     /*========== Colors ==========*/
     /*Color mode HSL(hue, saturation, lightness)*/
@@ -44,8 +44,8 @@ nav li:hover {
 }
 
 #fb-logos img {
-  height: 50px;
-  width: 50px;
+  height: 45px;
+  width: 45px;
 }
 
 /*========== Responsive typography ==========*/
@@ -91,6 +91,7 @@ nav li:hover {
   /*=============== NAV ===============*/
   .nav {
     height: var(--header-height);
+    align-items: center;
   }
   
   .nav__logo, 
@@ -113,6 +114,22 @@ nav li:hover {
     font-weight: var(--font-semi-bold);
     /* Color highlighting when pressed on mobile devices */
     /*-webkit-tap-highlight-color: transparent;*/
+  }
+
+  .nav li a {
+    font-size: 16px;
+  }
+
+  #message {
+    border: 2px solid gray;
+    border-radius: 4px;
+    padding: 5px 15px;
+    height: 35px;
+    align-self: center;
+  }
+
+  #message:hover {
+    background: #0C38AC;
   }
 
   .nav__logo h1 {
