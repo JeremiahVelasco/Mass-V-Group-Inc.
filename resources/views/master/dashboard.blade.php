@@ -74,7 +74,7 @@
                 </div>
             </div>
 
-            <ul class="box-info">
+            <ul class="box-info" id="master-box">
                 <li>
                     <i class='bx bxs-calendar-check'></i>
                     <span class="text">

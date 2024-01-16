@@ -43,6 +43,11 @@ nav li:hover {
   border-bottom: 3px solid #0C38AD;
 }
 
+#fb-logos img {
+  height: 50px;
+  width: 50px;
+}
+
 /*========== Responsive typography ==========*/
 @media screen and (min-width: 1024px) {
     :root {
