@@ -43,9 +43,9 @@
                 </a>
             </li>
             <li class="active">
-                <a href="/admin/promos">
+                <a href="/admin/events">
                     <i class='bx bxs-message-dots'></i>
-                    <span class="text">Promos</span>
+                    <span class="text">Events</span>
                 </a>
             </li>
         </ul>
@@ -73,16 +73,13 @@
         <main>
             <div class="head-title">
                 <div class="left">
-                    <h1>Promos</h1>
+                    <h1>Events</h1>
                 </div>
             </div>
-            <h1 class="cs">COMING SOON...</h1>
-            <!-- FOR FUTURE VERSION
             <div class="table-data">
-
                 <div class="todo">
                     <div class="head">
-                        <h3>Current Promos</h3>
+                        <h3>Current Events</h3>
                         <i class='bx bx-plus'></i>
                     </div>
                     <ul class="todo-list">
@@ -103,7 +100,6 @@
             </div>
         </main>
         MAIN
--->
     </section>
     <!-- CONTENT -->
 
