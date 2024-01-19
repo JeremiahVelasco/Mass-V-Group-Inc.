@@ -107,31 +107,15 @@
         <div class="section-container">
             <form action="#" id="battery-form">
                 <select name="manufacturer" id="manufacturer">
-                    <option value="default">Choose Manufacturer</option>
-                    <option value="Acura">Acura</option>
-                    <option value="Alpha Romeo">Alpha Romeo</option>
-                    <option value="Bentley">Bentley</option>
-                    <option value="BMW">BMW</option>
-                    <option value="BYD">BYD</option>
-                    <option value="Cherry">Cherry</option>
+                    @foreach ($vehicles as $vehicle)
+                        <option value="$vehicle->manufacturer">{{ $vehicle->manufacturer }}</option>
+                    @endforeach
                 </select>
                 <select name="model" id="model">
-                    <option value="default">Choose Model</option>
-                    <option value="Acura">Acura</option>
-                    <option value="Alpha Romeo">Alpha Romeo</option>
-                    <option value="Bentley">Bentley</option>
-                    <option value="BMW">BMW</option>
-                    <option value="BYD">BYD</option>
-                    <option value="Cherry">Cherry</option>
+
                 </select>
                 <select name="year" id="year">
-                    <option value="default">Choose Year</option>
-                    <option value="Acura">Acura</option>
-                    <option value="Alpha Romeo">Alpha Romeo</option>
-                    <option value="Bentley">Bentley</option>
-                    <option value="BMW">BMW</option>
-                    <option value="BYD">BYD</option>
-                    <option value="Cherry">Cherry</option>
+
                 </select><br>
                 <button type="button" onclick="submitAndChangeStyles()()">Submit</button>
             </form>

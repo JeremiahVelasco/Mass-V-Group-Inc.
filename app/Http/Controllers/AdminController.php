@@ -14,12 +14,13 @@ class AdminController extends Controller
 
     public function home()
     {
+        $vehicles = DB::table('vehicles')->get();
         $data = DB::table('batteries')
             ->where('saved_slot', '!=', 0)
             ->orderBy('saved_slot', 'asc')
             ->get();
 
-        return view('main.index', ['products' => $data]);
+        return view('main.index', ['products' => $data, 'vehicles' => $vehicles]);
     }
 
     public function loginAdmin(Request $request){
