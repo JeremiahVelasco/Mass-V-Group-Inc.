@@ -39,8 +39,8 @@ Route::get('/admin/products', function () {
     return view('admin.products');
 });
 
-Route::get('/admin/promos', function () {
-    return view('admin.promos');
+Route::get('/admin/events', function () {
+    return view('admin.events');
 });
 
 //USER ROUTES

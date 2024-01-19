@@ -46,9 +46,9 @@
                 </a>
             </li>
             <li>
-                <a href="/admin/promos">
+                <a href="/admin/events">
                     <i class='bx bxs-message-dots'></i>
-                    <span class="text">Promos</span>
+                    <span class="text">Events</span>
                 </a>
             </li>
         </ul>
