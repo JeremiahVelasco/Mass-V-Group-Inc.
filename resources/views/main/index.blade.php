@@ -11,6 +11,7 @@
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
 <body>
@@ -105,17 +106,18 @@
     <section class="section2">
         <h1>Select Your Vehicle</h1>
         <div class="section-container">
-            <form action="#" id="battery-form">
+            <form action="/suggestbattery" method="POST" id="battery-form">
                 <select name="manufacturer" id="manufacturer">
+                    <option>MANUFACTURER</option>
                     @foreach ($vehicles as $vehicle)
-                        <option value="$vehicle->manufacturer">{{ $vehicle->manufacturer }}</option>
+                        <option value="{{$vehicle}}">{{$vehicle}}</option>
                     @endforeach
                 </select>
                 <select name="model" id="model">
-
+                    <option>MODEL</option>
                 </select>
                 <select name="year" id="year">
-
+                    <option>YEAR</option>
                 </select><br>
                 <button type="button" onclick="submitAndChangeStyles()()">Submit</button>
             </form>

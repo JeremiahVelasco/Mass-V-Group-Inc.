@@ -14,13 +14,38 @@ class AdminController extends Controller
 
     public function home()
     {
-        $vehicles = DB::table('vehicles')->get();
+        $manufacturers=['ALFA ROMEO', 'ACURA', 'AUDI', 'BENTLEY', 'BMW', 'BUILD YOUR DREAM (BYD)', 'CHERRY CARS', 
+            'CHEVROLET', 'CHRYSLER', 'DAEWOO', 'DAIHATSU', 'DODGE', 'FERRARI', 'FIAT UNO', 'FORD', 'FOTON',
+            'GAC (Legado Motors)', 'GEELY', 'HAIMA', 'HONDA', 'HYUNDAI', 'ISUZU', 'JAGUAR', 'KIA', 'LAMBORGHINI',
+            'LAND ROVER', 'LEXUS', 'MAHINDRA', 'MASERATI', 'MAXUS', 'MAZDA', 'MERCEDES BENZ', 'MG (Morris Garage)',
+            'MINI', 'MITSUBISHI', 'NISSAN', 'OPEL', 'PEUGEOT', 'PORSCHE', 'PROTON WIRA', 'SSANGYONG', 'SUBARU',
+            'SUZUKI', 'TATA', 'TOYOTA', 'VOLKSWAGEN', 'VOLVO', 'JEEP', 'GMC'];
         $data = DB::table('batteries')
             ->where('saved_slot', '!=', 0)
             ->orderBy('saved_slot', 'asc')
             ->get();
 
-        return view('main.index', ['products' => $data, 'vehicles' => $vehicles]);
+        return view('main.index', ['products' => $data, 'vehicles' => $manufacturers]);
+    }
+
+    public function showModel(Request $request){
+        $sent_car=$request->input('manufacturer');
+        $data = DB::table('manufacturers')
+            ->select('model')
+            ->where('name',$sent_car)
+            ->get();
+        return response()->json(['message'=>$data]);
+    }
+
+    public function showYear(Request $request){
+        $model=$request->input('model');
+        $car=$request->input('car');
+        $data = DB::table('manufacturers')
+            ->select('year')
+            ->where('name',$car)
+            ->where('model',$model)
+            ->get();
+        return response()->json(['message'=>$data]);
     }
 
     public function loginAdmin(Request $request){
