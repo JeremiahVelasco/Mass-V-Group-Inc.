@@ -11,6 +11,7 @@
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
 <body>
@@ -105,32 +106,31 @@
     <section class="section2">
         <h1>Select Your Vehicle</h1>
         <div class="section-container">
-            <form action="#" id="battery-form">
+            <form id="battery-form">
                 <select name="manufacturer" id="manufacturer">
+                    <option>MANUFACTURER</option>
                     @foreach ($vehicles as $vehicle)
-                        <option value="$vehicle->manufacturer">{{ $vehicle->manufacturer }}</option>
+                        <option value="{{$vehicle}}">{{$vehicle}}</option>
                     @endforeach
                 </select>
                 <select name="model" id="model">
-
+                    <option>MODEL</option>
                 </select>
                 <select name="year" id="year">
-
+                    <option>YEAR</option>
                 </select><br>
-                <button type="button" onclick="submitAndChangeStyles()()">Submit</button>
+                <button type="button" onclick="submitForm()">Submit</button>
             </form>
             <div class="battery" id="battery">
-                <img src="assets/Mega Force Plus.png" alt="">
+                <img src="" alt="battery" id="battery-img">
                 <div class="battery-details">
-                    <h2>MEGAFORCE</h2>
+                    <h2 style="color:white" id="battery-header"></h2>
                     <ul>
-                        <li><strong>MVGI Battery:</strong> DIN100</li>
-                        <li><strong>New JIS Type:</strong> 60044</li>
-                        <li><strong>Warranty:</strong> 18 MONTHS/6 MONTHS</li>
+                        <li style="color:white" id="battery-mvgi"></li>
+                        <li style="color:white"id="battery-jis"></li>
+                        <li style="color:white" id="battery-warranty"></li>
                     </ul>
                     <br>
-                    <p>If the vehicle is equipped with start/stop technology, the recommended battery is AGM. If not,
-                        the recommended brand is MEGAFORCE.</p>
                 </div>
             </div>
         </div>
@@ -196,16 +196,6 @@
     </footer>
 
     <script src="main.js"></script>
-    <script>
-        function submitAndChangeStyles() {
-            const battery = document.getElementById('battery');
-            const form = document.getElementById('battery-form');
-            if (battery) {
-                battery.classList.add('animate');
-                form.classList.add('animate');
-            }
-        }
-    </script>
 </body>
 
 </html>

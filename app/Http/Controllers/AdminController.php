@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Batteries;
+use App\Models\Manufacturer;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Auth;
@@ -14,15 +15,56 @@ class AdminController extends Controller
 
     public function home()
     {
-        $vehicles = DB::table('vehicles')->get();
         $data = DB::table('batteries')
             ->where('saved_slot', '!=', 0)
             ->orderBy('saved_slot', 'asc')
             ->get();
 
-        return view('main.index', ['products' => $data, 'vehicles' => $vehicles]);
+        return view('main.index', ['products' => $data, 'vehicles' => Manufacturer::$manufacturers]);
     }
 
+    public function showModel(Request $request){
+        $sent_car=$request->input('manufacturer');
+        $data = DB::table('manufacturers')
+            ->select('model')
+            ->where('name',$sent_car)
+            ->get();
+        return response()->json(['message'=>$data]);
+    }
+
+    public function showYear(Request $request){
+        $model=$request->input('model');
+        $car=$request->input('car');
+        $data = DB::table('manufacturers')
+            ->select('year')
+            ->where('name',$car)
+            ->where('model',$model)
+            ->get();
+        return response()->json(['message'=>$data]);
+    }
+
+    public function suggestBattery(Request $request){
+        $mvgi="";
+        $jis="";
+        $car=$request->input('manufacturer');
+        $model=$request->input('model');
+        $mvgi_jis_result=DB::table('manufacturers')
+            ->select('mvg_size','jis_code')
+            ->where('name',$car)
+            ->orWhere('model',$model)
+            ->get();
+        foreach($mvgi_jis_result as $result){
+            $mvgi=$result->mvg_size;
+            $jis=$result->jis_code;
+        }
+        $suggested_battery=DB::table('battery_product_list')
+            ->select('asset','warranty','name')
+            ->where('mvgi_size','like','%' . $mvgi .'%')
+            ->orWhere('jis_code','like','%' . $jis .'%')
+            ->get();
+        return response()->json(['body'=>$suggested_battery,'mvgi'=>$mvgi,'jis'=>$jis]);
+    }
+    
     public function loginAdmin(Request $request){
         $credentials=$request->validate([
             'user'=>'required',

@@ -45,7 +45,9 @@ Route::get('/admin/events', function () {
 
 //USER ROUTES
 Route::get('/', [AdminController::class, 'home'])->name('home');
-
+Route::post('/show-models',[AdminController::class,'showModel']);
+Route::post('/show-year',[AdminController::class,'showYear']);
+Route::post('/suggest-battery',[AdminController::class,'suggestBattery']);
 //ADMIN REGISTER LOGIN AND LOGOUT
 Route::get('/admin', function () {
     return view('admin.login');
