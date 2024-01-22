@@ -1,6 +1,7 @@
 const csrfBody=document.querySelector("meta[name='csrf-token']");
 let model_list=[];
 let year="";
+
 /*=============== SHOW MENU ===============*/
 const showMenu = (toggleId, navId) =>{
     const toggle = document.getElementById(toggleId),
@@ -14,10 +15,63 @@ const showMenu = (toggleId, navId) =>{
 }
 showMenu('nav-toggle','nav-menu')
 
+
 /*============= toggle suggestion car===================*/
 const select_vehicle=document.querySelector('#manufacturer');
 const model_field=document.querySelector('#model');
 const year_field=document.querySelector('#year');
+function handleForm(formData){
+    fetch('/suggest-battery',{
+        method:'POST',
+        headers:{
+            'Content-Type':'application/json',
+            'X-CSRF-Token':csrfBody.content
+        },
+        body:JSON.stringify({
+            manufacturer:formData.get('manufacturer'),
+            model:formData.get('model'),
+            year:formData.get('year')
+        })
+    })
+    .then(response=>response.json())
+    .then(data=>{
+        console.log(data);
+        const s_index=Math.floor(Math.random()*data.body.length)+0;
+        console.log(s_index);
+        displaySuggestedBattery(data.body[s_index],data.mvgi,data.jis);
+    })
+    .catch(error=>{
+        console.log('Error',error);
+    });
+}
+
+function submitForm(){
+    let formData= new FormData();
+    formData.append('manufacturer',select_vehicle.value);
+    formData.append('model',model_field.field);
+    formData.append('year',year_field.value);
+    handleForm(formData);
+}
+
+function displaySuggestedBattery(body,mvgi,jis) {
+    const battery = document.getElementById('battery');
+    const form = document.getElementById('battery-form');
+    const battery_header=document.getElementById('battery-header');
+    const battery_image=document.getElementById('battery-img');
+    const battery_mvgi=document.getElementById('battery-mvgi');
+    const battery_jis=document.getElementById('battery-jis');
+    const battery_warranty=document.getElementById('battery-warranty');
+    if (battery) {
+        battery.classList.add('animate');
+        form.classList.add('animate');
+        battery_header.textContent=body.name;
+        battery_image.src=body.asset;
+        battery_mvgi.innerHTML='<strong>MVGI Battery:</strong>'+mvgi;
+        battery_jis.innerHTML='<strong>JIS Code:</strong>'+jis;
+        battery_warranty.innerHTML='<strong> Warranty:</strong>'+body.warranty;
+    }
+}
+
 function displayModels(){
     model_list.forEach(list=>{
         const option=document.createElement('option');
@@ -26,13 +80,14 @@ function displayModels(){
         model_field.appendChild(option);
     })
 }
+
 function displayYear(){
-    console.log(year);
     const option=document.createElement('option');
     option.value=year;
     option.textContent=year;
     year_field.appendChild(option);
 }
+
 function projectModels(car){
     fetch('/show-models',{
         method:'POST',
@@ -56,6 +111,7 @@ function projectModels(car){
         console.log('Error',error);
     })
 }
+
 function refreshModelOptions(){
     model_list.forEach(list=>{
         const selector=`option[value="${list}"]`;
@@ -64,12 +120,14 @@ function refreshModelOptions(){
     })
     model_list=[];
 }
+
 function refreshYearOptions(){
     const selector=`option[value="${year}"]`;
     const options_deletion=year_field.querySelector(selector);
     year_field.removeChild(options_deletion);
     year=""
 }
+
 function projectYear(model,car){
     fetch('/show-year',{
         method:'POST',
@@ -89,6 +147,7 @@ function projectYear(model,car){
         console.log('Error',error);
     })
 }
+
 select_vehicle.addEventListener('change',()=>{
     const car_value=select_vehicle.value;
     if(car_value === "MANUFACTURER"){
