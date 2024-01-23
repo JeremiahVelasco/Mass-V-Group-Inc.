@@ -57,8 +57,8 @@
                             id="fb-logos"><img src="assets/MVGFB.png"></a></li>
                     <li><a target="_blank" href="https://samiclubricants.com/" class="nav__link" id="fb-logos"><img
                                 src="assets/MFFB.png"></a></li>
-                    <li><a target="_blank" href="https://samiclubricants.com/" class="nav__link" id="fb-logos"><img
-                                src="assets/SamicFB.png"></a></li>
+                    <li><a target="_blank" href="https://www.facebook.com/SamicLubricantsPH" class="nav__link"
+                            id="fb-logos"><img src="assets/SamicFB.png"></a></li>
                     <li><a target="_blank" href="https://samiclubricants.com/" class="nav__link"><img
                                 src="assets/Samic- Logo- Blue (Edited 3).png"></a></li>
                     </li>
