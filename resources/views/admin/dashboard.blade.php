@@ -13,9 +13,9 @@
 
 <body>
 
-    @if(!session('adminsuccess'))
+    @if (!session('adminsuccess'))
         <script>
-            window.location.href="/admin";
+            window.location.href = "/admin";
         </script>
     @endif
     <!-- SIDEBAR -->
@@ -67,9 +67,6 @@
     <section id="content">
         <nav>
             <i class='bx bx-menu'></i>
-            <a href="#" class="profile">
-                <img src="/assets/people.png">
-            </a>
         </nav>
         <!-- NAVBAR -->
         <!-- MAIN -->
@@ -112,14 +109,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($batteries as $battery)
-                            <tr>
-                                <td>
-                                    <img src="/{{ $battery->image}}">
-                                    <p>{{ $battery->name}}</p>
-                                </td>
-                                <td><span class="status completed">{{ $battery->mvgi}}</span></td>
-                            </tr>
+                            @foreach ($batteries as $battery)
+                                <tr>
+                                    <td>
+                                        <img src="/{{ $battery->image }}">
+                                        <p>{{ $battery->name }}</p>
+                                    </td>
+                                    <td><span class="status completed">{{ $battery->mvgi }}</span></td>
+                                </tr>
                         </tbody>
                         @endforeach
                     </table>
@@ -129,11 +126,11 @@
                         <h3>Featured Products</h3>
                     </div>
                     <ul class="todo-list">
-                        @foreach($featured_batteries as $battery)
-                        <li class="completed">
-                            <p>{{$battery->name}}</p>
-                            <i class='bx bx-dots-vertical-rounded'></i>
-                        </li>
+                        @foreach ($featured_batteries as $battery)
+                            <li class="completed">
+                                <p>{{ $battery->name }}</p>
+                                <i class='bx bx-dots-vertical-rounded'></i>
+                            </li>
                         @endforeach
                     </ul>
                 </div>

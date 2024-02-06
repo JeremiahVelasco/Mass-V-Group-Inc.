@@ -15,9 +15,9 @@
 
 <body>
 
-    @if(!session('adminsuccess'))
+    @if (!session('adminsuccess'))
         <script>
-            window.location.href="/admin";
+            window.location.href = "/admin";
         </script>
     @endif
     <!-- SIDEBAR -->
@@ -69,9 +69,6 @@
     <section id="content">
         <nav>
             <i class='bx bx-menu'></i>
-            <a href="#" class="profile">
-                <img src="/assets/people.png">
-            </a>
         </nav>
         <!-- NAVBAR -->
         <!-- MAIN -->
@@ -97,15 +94,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($batteries as $battery)
-                            <tr>
-                                <td>
-                                    <img src="/{{ $battery->image }}">
-                                    <p>{{ $battery->name}}</p>
-                                </td>
-                                <td><span class="status completed">{{ $battery->mvgi}}</span></td>
-                                <td><a href="#" onclick="removeProduct('{{ $battery->name }}')" class="delete"><i class="fa-solid fa-trash-can"></i> Delete </a></td>
-                            </tr>
+                            @foreach ($batteries as $battery)
+                                <tr>
+                                    <td>
+                                        <img src="/{{ $battery->image }}">
+                                        <p>{{ $battery->name }}</p>
+                                    </td>
+                                    <td><span class="status completed">{{ $battery->mvgi }}</span></td>
+                                    <td><a href="#" onclick="removeProduct('{{ $battery->name }}')"
+                                            class="delete"><i class="fa-solid fa-trash-can"></i> Delete </a></td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>
@@ -142,7 +140,7 @@
         const modal = document.querySelector('.modal');
         const cancel = document.getElementById('cancel');
 
-        function removeProduct(name){
+        function removeProduct(name) {
             $.ajax({
                 type: 'POST',
                 url: '/deleteProduct',
@@ -185,26 +183,26 @@
             modal.classList.remove('active');
             modal.classList.add('hidden');
         });
-        $('#add-product-form').submit((event)=>{
+        $('#add-product-form').submit((event) => {
             event.preventDefault();
-            let imageFile=$("#image")[0].files[0];
-            let name=$("#name").val();
-            let mvgi=$("#mvgi").val();
-            let jis_type=$("#jis_type").val();
-            let warranty=$("#warranty").val();
-            let description=$("#description").val();
-            let csrfToken = $('meta[name="csrf-token"]').attr('content'); 
-            var form_data=new FormData();
-            form_data.append('image',imageFile);
-            form_data.append('name',name);
-            form_data.append('mvgi',mvgi);
-            form_data.append('jis_type',jis_type);
-            form_data.append('warranty',warranty);
-            form_data.append('description',description);
+            let imageFile = $("#image")[0].files[0];
+            let name = $("#name").val();
+            let mvgi = $("#mvgi").val();
+            let jis_type = $("#jis_type").val();
+            let warranty = $("#warranty").val();
+            let description = $("#description").val();
+            let csrfToken = $('meta[name="csrf-token"]').attr('content');
+            var form_data = new FormData();
+            form_data.append('image', imageFile);
+            form_data.append('name', name);
+            form_data.append('mvgi', mvgi);
+            form_data.append('jis_type', jis_type);
+            form_data.append('warranty', warranty);
+            form_data.append('description', description);
             $.ajax({
                 type: "POST",
                 url: "/addProduct",
-                data:form_data,
+                data: form_data,
                 processData: false,
                 contentType: false,
                 headers: {
@@ -215,7 +213,8 @@
                     location.reload();
                 },
                 error: function(error) {
-                    console.log("Did not work ", error.responseJSON.errors); // Log the validation errors
+                    console.log("Did not work ", error.responseJSON
+                    .errors); // Log the validation errors
                 }
             });
         });

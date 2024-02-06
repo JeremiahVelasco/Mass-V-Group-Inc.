@@ -12,9 +12,9 @@
 
 <body>
 
-    @if(!session('adminsuccess'))
+    @if (!session('adminsuccess'))
         <script>
-            window.location.href="/adminlogin";
+            window.location.href = "/adminlogin";
         </script>
     @endif
     <!-- SIDEBAR -->
@@ -66,9 +66,6 @@
     <section id="content">
         <nav>
             <i class='bx bx-menu'></i>
-            <a href="#" class="profile">
-                <img src="/assets/people.png">
-            </a>
         </nav>
         <main>
             <div class="head-title">

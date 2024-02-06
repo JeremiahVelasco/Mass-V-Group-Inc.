@@ -15,9 +15,9 @@
 
 <body>
 
-    @if(!session('adminsuccess'))
+    @if (!session('adminsuccess'))
         <script>
-            window.location.href="/admin";
+            window.location.href = "/admin";
         </script>
     @endif
     <!-- SIDEBAR -->
@@ -69,9 +69,6 @@
     <section id="content">
         <nav>
             <i class='bx bx-menu'></i>
-            <a href="#" class="profile">
-                <img src="/assets/people.png">
-            </a>
         </nav>
         <!-- NAVBAR -->
         <!-- MAIN -->
@@ -90,8 +87,8 @@
                             <h3 id="header-1">Product 1</h3>
                             <select name="feature" id="feature-1">
                                 <option value="default">Choose from Products</option>
-                                @foreach($batteries as $battery)
-                                <option value="{{ $battery->id }}">{{ $battery->name }}</option>
+                                @foreach ($batteries as $battery)
+                                    <option value="{{ $battery->id }}">{{ $battery->name }}</option>
                                 @endforeach
                             </select>
                             <button type="button" onclick="saveBattery(1)">Save</button>
@@ -105,8 +102,8 @@
                             <h3 id="header-2">Product 2</h3>
                             <select name="feature" id="feature-2">
                                 <option value="default">Default</option>
-                                @foreach($batteries as $battery)
-                                <option value="{{ $battery->id }}">{{ $battery->name }}</option>
+                                @foreach ($batteries as $battery)
+                                    <option value="{{ $battery->id }}">{{ $battery->name }}</option>
                                 @endforeach
                             </select>
                             <button type="button" onclick="saveBattery(2)">Save</button>
@@ -120,8 +117,8 @@
                             <h3 id="header-3">Product 3</h3>
                             <select name="feature" id="feature-3">
                                 <option value="default">Default</option>
-                                @foreach($batteries as $battery)
-                                <option value="{{ $battery->id }}">{{ $battery->name }}</option>
+                                @foreach ($batteries as $battery)
+                                    <option value="{{ $battery->id }}">{{ $battery->name }}</option>
                                 @endforeach
                             </select>
                             <button type="button" onclick="saveBattery(3)">Save</button>
@@ -135,8 +132,8 @@
                             <h3 id="header-4">Product 4</h3>
                             <select name="feature" id="feature-4">
                                 <option value="default">Default</option>
-                                @foreach($batteries as $battery)
-                                <option value="{{ $battery->id }}">{{ $battery->name }}</option>
+                                @foreach ($batteries as $battery)
+                                    <option value="{{ $battery->id }}">{{ $battery->name }}</option>
                                 @endforeach
                             </select>
                             <button type="button" onclick="saveBattery(4)">Save</button>
@@ -167,8 +164,8 @@
                             const num = result.saved_slot;
                             let imageContentSelector = "#image-content-" + num;
                             let headerSelector = "#header-" + num;
-                            let featureSelector = "#feature-"+num;
-                            $(imageContentSelector).attr("src", "/"+result.image);
+                            let featureSelector = "#feature-" + num;
+                            $(imageContentSelector).attr("src", "/" + result.image);
                             $(headerSelector).text(result.name);
                             $(featureSelector).val(result.id);
                         });
@@ -198,13 +195,13 @@
                         // Update the details on the page
                         if (response.success) {
                             console.log(response.message);
-                            let count=1;
-                            let all_h3=document.querySelectorAll('h3');
-                            all_h3.forEach(h3=>{
-                                h3.textContent='Product'+count;
+                            let count = 1;
+                            let all_h3 = document.querySelectorAll('h3');
+                            all_h3.forEach(h3 => {
+                                h3.textContent = 'Product' + count;
                                 count++;
                             })
-                            $(".fp_image").attr('src','/assets/placeholder.png');
+                            $(".fp_image").attr('src', '/assets/placeholder.png');
                             $(".feature").val('default');
                             renderSavedProducts();
                         }

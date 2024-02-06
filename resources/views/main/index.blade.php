@@ -154,7 +154,7 @@
                         long life.</p>
                 </div>
                 <div class="timeline-card">
-                    <p><strong>2017</strong> - changed the business name to MVG Circle 1001 Corp. to handle the sales
+                    <p><strong>2018</strong> - changed the business name to MVG Circle 1001 Corp. to handle the sales
                         and services of oil and lubricants, as well as automotive batteries under the following brands:
                     </p><br>
                     <ul>
