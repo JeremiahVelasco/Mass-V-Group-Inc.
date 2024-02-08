@@ -23,6 +23,8 @@ return new class extends Migration
             $table->string('description2');
             $table->string('description3');
             $table->integer('saved_slot');
+
+            $table->timestamps();
         });
     }
 

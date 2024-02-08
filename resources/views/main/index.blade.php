@@ -79,7 +79,7 @@
                 <a class="hero-btns" href="/contact" id="contact-button">Contact Us</a>
             </div>
             <div class="image">
-                <img src="assets/Mega Force Plus.png" alt="megaforce battery">
+                <img src="assets/MegaForce_PLUS.png" alt="megaforce battery">
             </div>
         </div>
     </header>
