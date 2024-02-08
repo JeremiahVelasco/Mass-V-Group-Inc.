@@ -20,4 +20,5 @@ class Battery extends Model
         'description3',
         'saved_slot',
     ];
+    public $timestamps=false;
 }
