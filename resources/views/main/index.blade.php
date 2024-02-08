@@ -94,7 +94,7 @@
                     <img id="featured-image" src="{{ $product->image }}" alt="">
                     <div class="featured-details">
                         <h2>{{ $product->name }}</h2>
-                        <p>{{ $product->description }}</p>
+                        <p>{{ $product->description1 }}</p>
                     </div>
                 </div>
             @endforeach

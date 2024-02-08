@@ -15,9 +15,9 @@ use App\Http\Controllers\MasterController;
 |
 */
 
-Route::get('/products', function () {
-    return view('main.products');
-});
+// Route::get('/products', function () {
+//     return view('main.products', );
+// });
 
 Route::get('/lubricants', function () {
     return view('main.lubricants');
@@ -48,6 +48,7 @@ Route::get('/', [AdminController::class, 'home'])->name('home');
 Route::post('/show-models',[AdminController::class,'showModel']);
 Route::post('/show-year',[AdminController::class,'showYear']);
 Route::post('/suggest-battery',[AdminController::class,'suggestBattery']);
+Route::get('/products',[AdminController::class,'products']);
 //ADMIN REGISTER LOGIN AND LOGOUT
 Route::get('/admin', function () {
     return view('admin.login');

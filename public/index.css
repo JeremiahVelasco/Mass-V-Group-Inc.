@@ -685,14 +685,6 @@ button:active {
     width: 600px;
 }
 
-.products, .lubricants {
-    background: linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)), url('assets/oil.jpg');
-    background-position: bottom;
-    background-size: cover;
-    background-attachment: fixed;
-    min-height: 90vh;
-}
-
 .lubricants {
   display: flex;
   flex-direction: column;
@@ -723,10 +715,17 @@ button:active {
 }
 
 .products .product-container {
-    height: 85vh;
+    min-height: 100vh;
+    padding: 5rem 15px;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    background: linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)), url('assets/oil.jpg');
+    background-position: bottom;
+    background-size: cover;
+    background-attachment: fixed;
+
 }
 
 .products img {
@@ -747,22 +746,24 @@ button:active {
     color: #fff;
 }
 
+
 .product-card button {
-    font-size: 18px;
+    font-size: 16px;
     padding: .5rem;
-    margin-top: 1rem;
     border: none;
+    margin-top: 1rem;
     border-radius: 10px;
     background: #0C38AD;
     color: #ffffff;
     cursor: pointer;
 }
 
-.product-card button:hover {
-    background: #114ef5;
+.product-card button #inquire {
+  color: #ffffff;
 }
 
-.product-card button:active {
+
+.product-card #inquire:active {
     transform: scale(1.05);
 }
 

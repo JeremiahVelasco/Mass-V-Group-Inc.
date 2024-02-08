@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Batteries;
+use App\Models\Battery;
 use App\Models\Manufacturer;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redis;
@@ -64,6 +64,13 @@ class AdminController extends Controller
             ->get();
         return response()->json(['body'=>$suggested_battery,'mvgi'=>$mvgi,'jis'=>$jis]);
     }
+
+    public function products(Request $request) {
+        $batteries = DB::table('batteries')
+            ->get();
+
+        return view('main.products', ['batteries' => $batteries]);
+    }
     
     public function loginAdmin(Request $request){
         $credentials=$request->validate([
@@ -108,10 +115,10 @@ class AdminController extends Controller
     public function adminproducts(Request $request)
     {
         if ($request->ajax()) {
-            return Batteries::select("name as value", "name")
+            return Battery::select("name as value", "name")
                 ->get();
         }
-        $batteries = Batteries::simplePaginate(10);
+        $batteries = Battery::simplePaginate(10);
 
         return view('admin.products', compact('batteries'));
     }
@@ -124,7 +131,9 @@ class AdminController extends Controller
             'mvgi' => 'required',
             'jis_type' => 'required',
             'warranty' => 'required',
-            'description' => 'required',
+            'description1' => 'required',
+            'description2' => 'nullable',
+            'description3' => 'nullable',
         ]);
         $data = [
             'image' => '',
@@ -132,7 +141,9 @@ class AdminController extends Controller
             'mvgi' => $request->input('mvgi'),
             'jis_type' => $request->input('jis_type'),
             'warranty' => $request->input('warranty'),
-            'description' => $request->input('description'),
+            'description1' => $request->input('description1'),
+            'description2' => $request->input('description2'),
+            'description3' => $request->input('description3'),
         ];
         if ($request->hasFile('image')) {
             $image = $request->file('image');
@@ -158,7 +169,9 @@ class AdminController extends Controller
                 'mvgi' => $data['mvgi'],
                 'jis_type' => $data['jis_type'],
                 'warranty' => $data['warranty'],
-                'description' => $data['description'],
+                'description1' => $data['description1'],
+                'description2' => $data['description2'],
+                'description3' => $data['description3'],
                 'saved_slot' => 0,
             ]);
     }
@@ -166,10 +179,10 @@ class AdminController extends Controller
     public function adminfeaturedproducts(Request $request)
     {
         if ($request->ajax()) {
-            return Batteries::select("name as value", "name")
+            return Battery::select("name as value", "name")
                 ->get();
         }
-        $batteries = Batteries::simplePaginate(10);
+        $batteries = Battery::simplePaginate(10);
 
         return view('admin.featuredproducts', compact('batteries'));
     }
@@ -184,7 +197,7 @@ class AdminController extends Controller
     }
     public function getDetails($id)
     {
-        $battery = Batteries::find($id);
+        $battery = Battery::find($id);
 
         return response()->json($battery);
     }
