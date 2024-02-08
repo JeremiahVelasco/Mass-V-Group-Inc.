@@ -70,10 +70,10 @@
 
     <section class="contact">
         <div class="map">
-            <iframe width="800" height="550" style="border:0" loading="lazy" allowfullscreen
+            <iframe width="800" height="550" style="border:0; border-radius: 4px;" loading="lazy" allowfullscreen
                 referrerpolicy="no-referrer-when-downgrade"
                 src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDdbmlqwiCpiMIfOZZPJwg6T811tt3eoU8
-                &q=Mass V Group, Congressional Avenue, Project 8, Quezon City, Metro Manila, Philippines">
+                &q=MVG Circle 1001 Corp. , 3F, 34 Congressional Ave, Project 8, Lungsod Quezon, Kalakhang Maynila">
             </iframe>
         </div>
         <div class="contact-form">
@@ -84,7 +84,8 @@
                 <label for="subject">Subject</label>
                 <input type="text" placeholder="e.g., Support">
                 <label for="message">Message</label>
-                <textarea name="message" id="message" cols="30" rows="10"></textarea>
+                <textarea name="message" id="message" cols="10" rows="10"
+                    style = "width: 100%; height: 150px; background: none; border: none"></textarea>
                 <button>Send</button>
             </form>
         </div>
