@@ -14,7 +14,10 @@ return new class extends Migration
         Schema::create('manufacturers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->timestamps();
+            $table->string('model');
+            $table->string('year');
+            $table->string('mvg_size');
+            $table->text('jis_code');
         });
     }
 

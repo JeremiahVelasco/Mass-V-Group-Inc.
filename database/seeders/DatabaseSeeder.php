@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\Battery;
 use App\Models\Manufacturer;
+use App\Models\Admins;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,10 +16,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        foreach(Manufacturer::$manufacturers as $manufactureName){
-            Manufacturer::factory()->create(['name'=>$manufactureName]);
-        }
+        // \App\Models\User::factory(10)->create();
 
+        // \App\Models\User::factory()->create([
+        //     'name' => 'Test User',
+        //     'email' => 'test@example.com',
+        // ]);
+        Admins::factory()->create();
 
         $batteries = [
             [
