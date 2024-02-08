@@ -11,13 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('manufacturers', function (Blueprint $table) {
-            $table->id();
+        //
+        Schema::create('battery_product_list',function(Blueprint $table){
+            $table->increments('id');
+            $table->string('asset');
+            $table->string('mvgi_size');
+            $table->string('jis_code');
+            $table->string('warranty');
             $table->string('name');
-            $table->string('model');
-            $table->string('year');
-            $table->string('mvg_size');
-            $table->text('jis_code');
         });
     }
 
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('manufacturers');
+        Schema::dropIfExists('battery_product_list');
     }
 };

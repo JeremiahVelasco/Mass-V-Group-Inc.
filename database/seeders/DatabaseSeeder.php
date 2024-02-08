@@ -20,8 +20,6 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        foreach(Manufacturer::$manufacturers as $manufactureName){
-            Manufacturer::factory()->create(['name'=>$manufactureName]);
-        }
+        
     }
 }
