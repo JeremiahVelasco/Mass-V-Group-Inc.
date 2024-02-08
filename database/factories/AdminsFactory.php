@@ -17,9 +17,16 @@ class AdminsFactory extends Factory
     public function definition(): array
     {
         return [
-            'user'=>'Kobe',
-            'password'=>bcrypt('pepper22'),
-            'role'=>1
+            [
+                'user'=>'Kobe',
+                'password'=>bcrypt('pepper22'),
+                'role'=>1
+            ],
+            [
+                'user' => 'Jeremiah',
+                'password' => bcrypt('pepper22'),
+                'role' => 2
+            ]
         ];
     }
 }

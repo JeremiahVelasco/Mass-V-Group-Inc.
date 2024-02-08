@@ -79,6 +79,11 @@
         </ul>
     </section>
 
+    <section class="posters">
+        <img src="assets/Samic 1.png" alt="SAMIC-Product-Page">
+        <img src="assets/Samic 2.png" alt="SAMIC-Product-Page">
+    </section>
+
     <section class="catalog">
         <h1 class="catalog-title">SAMIC Catalog</h1>
         <div class="embed-container" id="catalog">

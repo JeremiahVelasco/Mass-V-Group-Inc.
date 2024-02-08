@@ -768,6 +768,18 @@ button:active {
     transform: scale(1.05);
 }
 
+.posters {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 50px;
+  margin: 3rem 0;
+}
+
+.posters img {
+  height: 700px;
+}
+
 .catalog {
   padding: 2rem 6%;
   display: flex;
@@ -1020,5 +1032,11 @@ textarea {
     }
     .lubricants img {
         width: 60%;
+    }
+    .posters {
+      flex-direction: column;
+    }
+    .posters img {
+      height: 700px;
     }
 }
