@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
 <body>
@@ -77,16 +78,17 @@
             </iframe>
         </div>
         <div class="contact-form">
-            <form action="">
+            <form id="contact">
                 <h2>Have a query? Send us an Email</h2>
                 <label for="email">Email</label>
-                <input type="email" placeholder="e.g., juandelacruz@gmail.com">
+                <input type="email" id="email" placeholder="e.g., juandelacruz@gmail.com">
                 <label for="subject">Subject</label>
-                <input type="text" placeholder="e.g., Support">
+                <input type="text" id="subject" placeholder="e.g., Support">
                 <label for="message">Message</label>
-                <textarea name="message" id="message" cols="10" rows="10"
-                    style = "width: 100%; height: 150px; background: none; border: none"></textarea>
-                <button>Send</button>
+                <textarea name="message" id="message-content" cols="10" rows="10"
+                    style = "width: 100%; height: 150px; background: none; border: none">
+                </textarea>
+                <button onclick="sendEmail(event)">Send</button>
             </form>
         </div>
 
