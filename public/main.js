@@ -35,9 +35,7 @@ function handleForm(formData){
     })
     .then(response=>response.json())
     .then(data=>{
-        console.log(data);
         const s_index=Math.floor(Math.random()*data.body.length)+0;
-        console.log(s_index);
         displaySuggestedBattery(data.body[s_index],data.mvgi,data.jis);
     })
     .catch(error=>{
@@ -168,3 +166,32 @@ model_field.addEventListener('change',()=>{
     }
     projectYear(model_value,car_value);
 })
+
+/***************Message code*****************/
+function sendEmail(event){
+    event.preventDefault();
+    const email=document.getElementById('email').value;
+    const subject=document.getElementById('subject').value;
+    const message=document.getElementById('message-content').value;
+    fetch('/send-message',{
+        method:'POST',
+        headers:{
+            'Content-Type':'application/json',
+            'X-CSRF-Token':csrfBody.content
+        },
+        body:JSON.stringify({
+            'email':email,
+            'subject':subject,
+            'message':message,
+        })
+    })
+    .then(response=>response.json())
+    .then(data=>{
+        if(data.success){
+            alert('You message has been sent');
+        }
+        else{
+            console.log(data.error);
+        }
+    })
+}

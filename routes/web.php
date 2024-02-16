@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MasterController;
+use App\Http\Controllers\EmailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +50,7 @@ Route::post('/show-models',[AdminController::class,'showModel']);
 Route::post('/show-year',[AdminController::class,'showYear']);
 Route::post('/suggest-battery',[AdminController::class,'suggestBattery']);
 Route::get('/products',[AdminController::class,'products']);
+Route::post('/send-message',[EmailController::class,'sendEmail']);
 //ADMIN REGISTER LOGIN AND LOGOUT
 Route::get('/admin', function () {
     return view('admin.login');
