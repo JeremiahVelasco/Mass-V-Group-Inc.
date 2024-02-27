@@ -123,8 +123,9 @@ nav li:hover {
   #message {
     outline: 2px solid gray;
     border-radius: 4px;
-    padding: 4px 12px;
+    padding: 4px 14px;
     height: 30px;
+    width: auto;
     align-self: center;
     background: #0C38AC;
   }
@@ -136,7 +137,7 @@ nav li:hover {
 
   .nav__logo h1 {
     color: #222222;
-    font-size: 20px;
+    font-size: 18px;
   }
   
   .nav__logo img {
