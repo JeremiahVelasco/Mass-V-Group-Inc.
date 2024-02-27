@@ -131,13 +131,13 @@ nav li:hover {
   }
 
   #message a {
-    background: #0C38AC;
+    background: red;
     color: #fff;
   }
 
   .nav__logo h1 {
     color: #222222;
-    font-size: 92px;
+    font-size: 18px;
   }
   
   .nav__logo img {
