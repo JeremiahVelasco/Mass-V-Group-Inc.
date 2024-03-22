@@ -103,7 +103,7 @@
 
 
     <!--SECTION 2-->
-    <section class="section2">
+    <section class="section2" id="section2">
         <h1>Select Your Vehicle</h1>
         <div class="section-container">
             <form id="battery-form">
