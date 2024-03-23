@@ -17,9 +17,9 @@ showMenu('nav-toggle','nav-menu')
 
 
 /*============= toggle suggestion car===================*/
-const select_vehicle=document.querySelector('#manufacturer');
-const model_field=document.querySelector('#model');
-const year_field=document.querySelector('#year');
+let select_vehicle=document.getElementById('manufacturer');
+let model_field=document.getElementById('model');
+let year_field=document.getElementById('year');
 function handleForm(formData){
     fetch('/suggest-battery',{
         method:'POST',
