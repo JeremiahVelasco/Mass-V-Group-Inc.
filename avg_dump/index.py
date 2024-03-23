@@ -8,7 +8,7 @@ conn=pymysql.connect(
     database='laravel'
 )
 cursor=conn.cursor()
-data=pd.read_excel('BatterySuggestions.xlsx',usecols=['MANUFACTURER','MODEL','YEAR','MVG SIZE','JIS CODE'])
+data=pd.read_excel('BatterySuggestions.xlsx',sheet_name="Table formatted",usecols=['MANUFACTURER','MODEL','YEAR','MVG SIZE','JIS CODE'])
 manufacturer=data.to_dict(orient='records')
 
 for info in manufacturer:

@@ -119,20 +119,9 @@
                 <select name="year" id="year">
                     <option>YEAR</option>
                 </select><br>
-                <button type="button" onclick="submitForm()">Submit</button>
+                <button id = "submit-btn" type="button" onclick="submitForm()">Submit</button>
             </form>
-            <div class="battery" id="battery">
-                <img src="" alt="battery" id="battery-img">
-                <div class="battery-details">
-                    <h2 style="color:white" id="battery-header"></h2>
-                    <ul>
-                        <li style="color:white" id="battery-mvgi"></li>
-                        <li style="color:white"id="battery-jis"></li>
-                        <li style="color:white" id="battery-warranty"></li>
-                    </ul>
-                    <br>
-                </div>
-            </div>
+            <div class="battery" id="battery"></div>
         </div>
     </section>
 
@@ -196,6 +185,8 @@
     </footer>
 
     <script src="main.js"></script>
+
+
 </body>
 
 </html>

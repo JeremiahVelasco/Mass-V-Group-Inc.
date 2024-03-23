@@ -22,7 +22,7 @@ class BatterySeeder extends Seeder
                 'description1' => 'Lorem ipsum dolor sit amet consectetur.',
                 'description2' => 'Lorem ipsum dolor sit amet consectetur.',
                 'description3' => 'Lorem ipsum dolor sit amet consectetur.',
-                'saved_slot' => 0
+                'saved_slot' =>1, 
             ],
             [
                 'image' => 'assets/MegaForce_LM.png',
@@ -33,7 +33,7 @@ class BatterySeeder extends Seeder
                 'description1' => 'Lorem ipsum dolor sit amet consectetur.',
                 'description2' => 'Lorem ipsum dolor sit amet consectetur.',
                 'description3' => 'Lorem ipsum dolor sit amet consectetur.',
-                'saved_slot' => 0
+                'saved_slot' => 2,
             ],
             [
                 'image' => 'assets/MegaForce_MF.png',
@@ -44,7 +44,7 @@ class BatterySeeder extends Seeder
                 'description1' => 'Lorem ipsum dolor sit amet consectetur.',
                 'description2' => 'Lorem ipsum dolor sit amet consectetur.',
                 'description3' => 'Lorem ipsum dolor sit amet consectetur.',
-                'saved_slot' => 0
+                'saved_slot' => 3,
             ],
             [
                 'image' => 'assets/Primera.png',
@@ -55,7 +55,7 @@ class BatterySeeder extends Seeder
                 'description1' => 'Lorem ipsum dolor sit amet consectetur.',
                 'description2' => 'Lorem ipsum dolor sit amet consectetur.',
                 'description3' => 'Lorem ipsum dolor sit amet consectetur.',
-                'saved_slot' => 0
+                'saved_slot' => 4,
             ],
             [
                 'image' => 'assets/SuperKing.png',

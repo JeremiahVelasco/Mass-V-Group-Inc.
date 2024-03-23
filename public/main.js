@@ -35,40 +35,78 @@ function handleForm(formData){
     })
     .then(response=>response.json())
     .then(data=>{
-        const s_index=Math.floor(Math.random()*data.body.length)+0;
-        displaySuggestedBattery(data.body[s_index],data.mvgi,data.jis);
+        let formBattery= document.getElementById('battery-form');
+        if(data.result === true){
+            const dataBody=data.body;
+            displaySuccess(dataBody,data.mvgi,data.jis);
+            formBattery.reset();
+        }
+        else if (data.result === false)
+        {   
+            displayFail();
+            formBattery.reset();
+        }
     })
     .catch(error=>{
         console.log('Error',error);
     });
 }
 
+function displaySuccess(body,mvgi,jis){
+    const battery = document.getElementById('battery');
+    const form = document.getElementById('battery-form');
+    battery.innerHTML='';
+    battery.innerHTML=`
+        <img src="${body.asset}" alt="battery" id="battery-img">
+        <div class="battery-details">
+            <h2 style="color:white" id="battery-header">${body.name}</h2>
+            <ul>
+                <li style="color:white" id="battery-mvgi"><strong>MVGI Battery:</strong>${mvgi}</li>
+                <li style="color:white"id="battery-jis"><strong>JIS Code:</strong>${jis}</li>
+                <li style="color:white" id="battery-warranty"><strong>Warranty:</strong>${body.warranty}</li>
+            </ul>
+        </div>
+        <br>
+    `;
+    battery.classList.add('animate');
+    form.classList.add('animate');
+}
+
+function displayFail(){
+    const battery= document.getElementById('battery');
+    const form = document.getElementById('battery-form');
+    battery.innerHTML='';
+    battery.innerHTML=`
+        <div class="battery-details">
+            <br><br>
+            <h2 style="color:white" id="battery-header">Battery Not Found</h2>
+            <button type="button" style="align-self:center;width:50%" onclick="window.location.href='/contact'">Send us a message</button>
+        </div>
+        <br>
+    `;
+    battery.classList.add('animate');
+    form.classList.add('animate');
+}
+
 function submitForm(){
     let formData= new FormData();
     formData.append('manufacturer',select_vehicle.value);
-    formData.append('model',model_field.field);
+    formData.append('model',model_field.value);
     formData.append('year',year_field.value);
     handleForm(formData);
 }
 
-function displaySuggestedBattery(body,mvgi,jis) {
-    const battery = document.getElementById('battery');
-    const form = document.getElementById('battery-form');
-    const battery_header=document.getElementById('battery-header');
-    const battery_image=document.getElementById('battery-img');
-    const battery_mvgi=document.getElementById('battery-mvgi');
-    const battery_jis=document.getElementById('battery-jis');
-    const battery_warranty=document.getElementById('battery-warranty');
-    if (battery) {
-        battery.classList.add('animate');
-        form.classList.add('animate');
-        battery_header.textContent=body.name;
-        battery_image.src=body.asset;
-        battery_mvgi.innerHTML='<strong>MVGI Battery:</strong>'+mvgi;
-        battery_jis.innerHTML='<strong>JIS Code:</strong>'+jis;
-        battery_warranty.innerHTML='<strong> Warranty:</strong>'+body.warranty;
-    }
+// If nadetect na false yung result na response
+// mauupdate yung SUBMIT button to Send us a message button
+function changeSubmitButton() {
+    const submitButton = document.getElementById('submit-btn');
+    const newButton= document.getElementById('message-btn');
+    submitButton.style.position="absolute";
+    newButton.style.position="relative";
+    submitButton.style.visibility="hidden";
+    newButton.style.visibility="visible";
 }
+
 
 function displayModels(){
     model_list.forEach(list=>{
