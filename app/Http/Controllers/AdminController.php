@@ -44,31 +44,32 @@ class AdminController extends Controller
     }
 
     public function suggestBattery(Request $request){
-        $mvgi="";
-        $jis="";
-        $car=$request->input('manufacturer');
-        $model=$request->input('model');
+        // $mvgi="";
+        // $jis="";
+        // $car=$request->input('manufacturer');
+        // $model=$request->input('model');
 
-        // Query the manufacturers for mvgi, manufacturer and model
-        $mvgi_jis_result=DB::table('manufacturers')
-            ->select('mvg_size','jis_code')
-            ->where('name',$car)
-            ->where('model',$model)
-            ->first();
-        $mvgi=$mvgi_jis_result->mvg_size;
-        $jis=$mvgi_jis_result->jis_code; 
-        // Query the battery product list for mvgi and jis
-        $suggested_battery=DB::table('battery_product_list')
-            ->select('asset','warranty','name')
-            ->where('mvgi_size','like','%'.$mvgi.'%')
-            ->where('jis_code','like','%'.$jis.'%')
-            ->first();
-        if (!$mvgi_jis_result || !$suggested_battery)
-        {
-            return response()->json(['result' => false]);
-        }
+        // // Query the manufacturers for mvgi, manufacturer and model
+        // $mvgi_jis_result=DB::table('manufacturers')
+        //     ->select('mvg_size','jis_code')
+        //     ->where('name',$car)
+        //     ->where('model',$model)
+        //     ->first();
+        // $mvgi=$mvgi_jis_result->mvg_size;
+        // $jis=$mvgi_jis_result->jis_code; 
+        // // Query the battery product list for mvgi and jis
+        // $suggested_battery=DB::table('battery_product_list')
+        //     ->select('asset','warranty','name')
+        //     ->where('mvgi_size','like','%'.$mvgi.'%')
+        //     ->where('jis_code','like','%'.$jis.'%')
+        //     ->first();
+        // if (!$mvgi_jis_result || !$suggested_battery)
+        // {
+        //     return response()->json(['result' => false]);
+        // }
         
-        return response()->json(['body'=>$suggested_battery,'mvgi'=>$mvgi,'jis'=>$jis, 'result' => true]);
+        // return response()->json(['body'=>$suggested_battery,'mvgi'=>$mvgi,'jis'=>$jis, 'result' => true]);
+        return response()->json($request);
     }
 
     public function products(Request $request) {
