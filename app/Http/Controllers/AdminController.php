@@ -57,6 +57,7 @@ class AdminController extends Controller
             ->where('model',$model)
             ->where('year',$year)
             ->get();
+        return response()->json($mvgi_jis_result);
         $mvgi=$mvgi_jis_result->mvg_size;
         $jis=$mvgi_jis_result->jis_code; 
         // Query the battery product list for mvgi and jis
