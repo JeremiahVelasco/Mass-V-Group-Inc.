@@ -88,7 +88,8 @@ function displayFail(){
     form.classList.add('animate');
 }
 
-function submitForm(){
+function submitForm(event){
+    event.preventDefault();
     let formData= new FormData();
     formData.append('manufacturer',select_vehicle.value);
     formData.append('model',model_field.value);
@@ -199,7 +200,6 @@ select_vehicle.addEventListener('change',()=>{
 model_field.addEventListener('change',()=>{
     const model_value=model_field.value;
     const car_value=select_vehicle.value;
-    console.log(model_value);
     if(year.length>0){
         refreshYearOptions();
     }

@@ -56,7 +56,7 @@ class AdminController extends Controller
             ->where('name',$car)
             ->where('model',$model)
             ->where('year',$year)
-            ->get();
+            ->first();
         $mvgi=$mvgi_jis_result->mvg_size;
         $jis=$mvgi_jis_result->jis_code; 
         // Query the battery product list for mvgi and jis

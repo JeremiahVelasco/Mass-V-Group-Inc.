@@ -119,7 +119,7 @@
                 <select name="year" id="year">
                     <option>YEAR</option>
                 </select><br>
-                <button id = "submit-btn" type="button" onclick="submitForm()">Submit</button>
+                <button id = "submit-btn" type="button" onclick="submitForm(event)">Submit</button>
             </form>
             <div class="battery" id="battery"></div>
         </div>
