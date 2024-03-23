@@ -48,12 +48,14 @@ class AdminController extends Controller
         $jis="";
         $car=$request->input('manufacturer');
         $model=$request->input('model');
+        $year=$request->input('year');
 
         // Query the manufacturers for mvgi, manufacturer and model
         $mvgi_jis_result=DB::table('manufacturers')
             ->select('mvg_size','jis_code')
             ->where('name',$car)
             ->where('model',$model)
+            ->where('year',$year)
             ->first();
         $mvgi=$mvgi_jis_result->mvg_size;
         $jis=$mvgi_jis_result->jis_code; 
