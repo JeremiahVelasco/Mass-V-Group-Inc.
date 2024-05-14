@@ -25,6 +25,3 @@
 
     </section>
 @endsection
-</body>
-
-</html>
