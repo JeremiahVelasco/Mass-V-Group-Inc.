@@ -11,7 +11,7 @@
             <a class="hero-btns" href="/contact" id="contact-button">Contact Us</a>
         </div>
         <div class="image">
-            <img src="/storage/assets/MegaForce Plus.png" alt="megaforce battery">
+            <img src="/assets/MegaForce Plus.png" alt="megaforce battery">
         </div>
     </div>
 
