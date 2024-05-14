@@ -12,8 +12,8 @@
     </section>
 
     <section class="posters">
-        <img src="assets/Samic 1.png" alt="SAMIC-Product-Page">
-        <img src="assets/Samic 2.png" alt="SAMIC-Product-Page">
+        <img src="assets/SamicOne.png" alt="SAMIC-Product-Page">
+        <img src="assets/SamicTwo.png" alt="SAMIC-Product-Page">
     </section>
 
     <section class="catalog">
