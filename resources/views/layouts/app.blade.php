@@ -19,7 +19,7 @@
         <nav class="nav container">
             <div class="nav__data">
                 <a href="/" class="nav__logo">
-                    <img src="{{asset('storage/assets/MVG Circle 1001 Logo PNG 2 - RGB.png')}}" alt="Mass V Group Inc. Logo">
+                    <img src="{{asset('assets/MVG Circle 1001 Logo PNG 2 - RGB.png')}}" alt="Mass V Group Inc. Logo">
                     <h1>MVG Circle 1001</h1>
                 </a>
 
