@@ -17,9 +17,10 @@
                 <input type="text" id="subject" placeholder="e.g., Support">
                 <label for="message">Message</label>
                 <textarea name="message" id="message-content" cols="10" rows="10"
-                    style = "width: 100%; height: 150px; background: none; border: none">
+                    style = "width: 100%; height: 150px; background: white; border: none">
                 </textarea>
                 <button onclick="sendEmail(event)">Send</button>
+                <a id="to-products-btn" href="{{ url('/products') }}">Go to Batteries</a>
             </form>
         </div>
 

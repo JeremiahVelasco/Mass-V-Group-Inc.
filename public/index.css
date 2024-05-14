@@ -973,6 +973,14 @@ textarea {
   color: red;
 }
 
+#to-products-btn {
+  margin-top: .5rem;
+  text-decoration: underline;
+  color: gray;
+  text-align: center;
+  font-size: 14px;
+}
+
 
 @media only screen and (max-width: 600px) {
     .nav {
