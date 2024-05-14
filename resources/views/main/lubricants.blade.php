@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
     <section class="lubricants">
         <img src="assets/samic-collection.png" alt="">
@@ -28,6 +27,3 @@
         </div>
     </section>
 @endsection
-</body>
-
-</html>
