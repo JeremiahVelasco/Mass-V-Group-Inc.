@@ -70,8 +70,7 @@ class AdminController extends Controller
             return response()->json(['result' => false]);
         }
         
-        // return response()->json(['body'=>$suggested_battery,'mvgi'=>$mvgi,'jis'=>$jis, 'result' => true]);
-        return response()->json($request);
+        return response()->json(['body'=>$suggested_battery,'mvgi'=>$mvgi,'jis'=>$jis, 'result' => true]);
     }
 
     public function products(Request $request) {
