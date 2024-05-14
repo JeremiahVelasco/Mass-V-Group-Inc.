@@ -57,7 +57,7 @@ function displaySuccess(body,mvgi,jis){
     const form = document.getElementById('battery-form');
     battery.innerHTML='';
     battery.innerHTML=`
-        <img src="assets/${body.asset}" alt="battery" id="battery-img">
+        <img src="storage/${body.asset}" alt="battery" id="battery-img">
         <div class="battery-details">
             <h2 style="color:white" id="battery-header">${body.name}</h2>
             <ul>
