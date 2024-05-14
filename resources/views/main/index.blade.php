@@ -30,7 +30,7 @@
                 </div>
             @endforeach
         </div>
-        <button id="feature-button">See all Products</button>
+        {{-- <button id="feature-button">See all Products</button> --}}
     </section>
 
 
