@@ -14,7 +14,7 @@ class BatterySeeder extends Seeder
     {
         $batteries = [
             [
-                'image' => '/storage/assets/MegaForce_PLUS.png',
+                'image' => '/assets/MegaForce_PLUS.png',
                 'name' => 'MegaForce Plus',
                 'mvgi' => '12364',
                 'jis_type' => '65422',
@@ -25,7 +25,7 @@ class BatterySeeder extends Seeder
                 'saved_slot' =>1, 
             ],
             [
-                'image' => '/storage/assets/MegaForce_LM.png',
+                'image' => '/assets/MegaForce_LM.png',
                 'name' => 'MegaForce Low Maintenance',
                 'mvgi' => '12274',
                 'jis_type' => '65127',
@@ -36,7 +36,7 @@ class BatterySeeder extends Seeder
                 'saved_slot' => 2,
             ],
             [
-                'image' => '/storage/assets/MegaForce_MF.png',
+                'image' => '/assets/MegaForce_MF.png',
                 'name' => 'MegaForce Maintenance Free',
                 'mvgi' => '24764',
                 'jis_type' => '15592',
@@ -47,7 +47,7 @@ class BatterySeeder extends Seeder
                 'saved_slot' => 3,
             ],
             [
-                'image' => '/storage/assets/Primera.png',
+                'image' => '/assets/Primera.png',
                 'name' => 'Primera Low Maintenance',
                 'mvgi' => '62521',
                 'jis_type' => '656727',
@@ -58,7 +58,7 @@ class BatterySeeder extends Seeder
                 'saved_slot' => 4,
             ],
             [
-                'image' => '/storage/assets/SuperKing.png',
+                'image' => '/assets/SuperKing.png',
                 'name' => 'Superking Low Maintenance',
                 'mvgi' => '12364',
                 'jis_type' => '65422',
