@@ -11,7 +11,7 @@
             <a class="hero-btns" href="/contact" id="contact-button">Contact Us</a>
         </div>
         <div class="image">
-            <img src="assets/MegaForce Plus.png" alt="megaforce battery">
+            <img src="{{asset('storage/assets/MegaForce Plus.png')}}" alt="megaforce battery">
         </div>
     </div>
 
@@ -22,7 +22,7 @@
         <div class="fp-container">
             @foreach ($products as $product)
                 <div class="card">
-                    <img id="featured-image" src="{{ $product->image }}" alt="">
+                    <img id="featured-image" src="{{ asset('storage/'.$product->image)}}" alt="">
                     <div class="featured-details">
                         <h2>{{ $product->name }}</h2>
                         <p>{{ $product->description1 }}</p>

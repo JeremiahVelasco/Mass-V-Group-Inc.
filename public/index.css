@@ -382,7 +382,7 @@ nav li:hover {
     padding: 80px 4%;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(rgba(255,255,255,.78),rgba(255,255,255,.90)), url('assets/bg.jpg') no-repeat;
+    background: linear-gradient(rgba(255,255,255,.78),rgba(255,255,255,.90)), url('storage/assets/bg.jpg') no-repeat;
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
@@ -539,7 +539,7 @@ button:active {
 
 .section2 {
     padding: 40px 4%;
-    background: linear-gradient(rgba(28, 28, 28, 0.4),rgba(76, 76, 76, 0.7)), url('assets/misc.jpg') no-repeat;
+    background: linear-gradient(rgba(28, 28, 28, 0.4),rgba(76, 76, 76, 0.7)), url('storage/assets/misc.jpg') no-repeat;
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
