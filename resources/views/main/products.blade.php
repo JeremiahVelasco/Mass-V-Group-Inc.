@@ -4,7 +4,7 @@
         <div class="product-container">
             @foreach ($batteries as $battery)
                 <div class="product-card">
-                    <img src="{{ $battery->image }}" alt="megaforce batteries">
+                    <img src="{{asset('storage/'.$battery->image) }}" alt="megaforce batteries">
                     <h2>{{ $battery->name }}</h2>
                     <ul class="main-details">
                         <li>{{ $battery->description1 }}</li>
