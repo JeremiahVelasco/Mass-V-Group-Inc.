@@ -29,6 +29,7 @@
                     </div>
                 </div>
             @endforeach
+            <button id="feature-button">See all Products</button>
         </div>
     </section>
 

@@ -490,6 +490,20 @@ button:active {
     margin-bottom: 3rem;
 }
 
+.section1 #feature-button {
+  background-color: #0C38AD;
+  padding: .7rem 1.2rem;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.section1 #feature-button:hover {
+  background-color: #114ef5; 
+}
+
 .fp-container {
     display: flex;
     justify-content: space-around;
