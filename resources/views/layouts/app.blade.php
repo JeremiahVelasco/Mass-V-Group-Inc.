@@ -19,7 +19,7 @@
         <nav class="nav container">
             <div class="nav__data">
                 <a href="/" class="nav__logo">
-                    <img src="/storage/assets/MVG Circle 1001 Logo PNG 2 - RGB.png" alt="Mass V Group Inc. Logo">
+                    <img src="/assets/MVG Circle 1001 Logo PNG 2 - RGB.png" alt="Mass V Group Inc. Logo">
                     <h1>MVG Circle 1001</h1>
                 </a>
 
@@ -55,13 +55,13 @@
                     </li>
 
                     <li><a target="_blank" href="https://www.facebook.com/massvgroup/" class="nav__link"
-                            id="fb-logos"><img src="/storage/assets/MVGFB.png"></a></li>
+                            id="fb-logos"><img src="/assets/MVGFB.png"></a></li>
                     <li><a target="_blank" href="https://web.facebook.com/MegaforcePrimeraSuperkingPH" class="nav__link"
-                            id="fb-logos"><img src="/storage/assets/MFFB.png"></a></li>
+                            id="fb-logos"><img src="/assets/MFFB.png"></a></li>
                     <li><a target="_blank" href="https://www.facebook.com/SamicLubricantsPH" class="nav__link"
-                            id="fb-logos"><img src="/storage/assets/SamicFB.png"></a></li>
+                            id="fb-logos"><img src="/assets/SamicFB.png"></a></li>
                     <li><a target="_blank" href="https://samiclubricants.com/" class="nav__link"><img
-                                src="/storage/assets/Samic- Logo- Blue (Edited 3).png"></a></li>
+                                src="/assets/Samic- Logo- Blue (Edited 3).png"></a></li>
                     </li>
                     <li id="message"><a href="/contact" class="nav__link">Message Us</a></li>
                 </ul>
